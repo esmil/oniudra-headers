@@ -26,28 +26,32 @@
  * (PWM+ indicates the additional PWM pins on the ATmega168.)
  */
 
-#define define_pin(nr, ddr, port, pinx, bit) \
+#define define_pin(nr, ddr, port, pinx, pcmsk, bit) \
 	static inline void pin##nr##_mode_output() { ddr  |= _BV(bit);    } \
 	static inline void pin##nr##_mode_input()  { ddr  &= ~(_BV(bit)); } \
 	static inline void pin##nr##_high()        { port |= _BV(bit);    } \
 	static inline void pin##nr##_low()         { port &= ~(_BV(bit)); } \
-	static inline void pin##nr##_toggle()      { pinx |= _BV(bit);    }
+	static inline void pin##nr##_toggle()      { pinx |= _BV(bit);    } \
+	static inline void pin##nr##_interrupt_mask() \
+		{ pcmsk |= _BV(bit); } \
+	static inline void pin##nr##_interrupt_unmask() \
+		{ pcmsk &= ~(_BV(bit)); }
 
-define_pin( 0, DDRD, PORTD, PIND, 0)
-define_pin( 1, DDRD, PORTD, PIND, 1)
-define_pin( 2, DDRD, PORTD, PIND, 2)
-define_pin( 3, DDRD, PORTD, PIND, 3)
-define_pin( 4, DDRD, PORTD, PIND, 4)
-define_pin( 5, DDRD, PORTD, PIND, 5)
-define_pin( 6, DDRD, PORTD, PIND, 6)
-define_pin( 7, DDRD, PORTD, PIND, 7)
+define_pin( 0, DDRD, PORTD, PIND, PCMSK2, 0)
+define_pin( 1, DDRD, PORTD, PIND, PCMSK2, 1)
+define_pin( 2, DDRD, PORTD, PIND, PCMSK2, 2)
+define_pin( 3, DDRD, PORTD, PIND, PCMSK2, 3)
+define_pin( 4, DDRD, PORTD, PIND, PCMSK2, 4)
+define_pin( 5, DDRD, PORTD, PIND, PCMSK2, 5)
+define_pin( 6, DDRD, PORTD, PIND, PCMSK2, 6)
+define_pin( 7, DDRD, PORTD, PIND, PCMSK2, 7)
 
-define_pin( 8, DDRB, PORTB, PINB, 0)
-define_pin( 9, DDRB, PORTB, PINB, 1)
-define_pin(10, DDRB, PORTB, PINB, 2)
-define_pin(11, DDRB, PORTB, PINB, 3)
-define_pin(12, DDRB, PORTB, PINB, 4)
-define_pin(13, DDRB, PORTB, PINB, 5)
+define_pin( 8, DDRB, PORTB, PINB, PCMSK0, 0)
+define_pin( 9, DDRB, PORTB, PINB, PCMSK0, 1)
+define_pin(10, DDRB, PORTB, PINB, PCMSK0, 2)
+define_pin(11, DDRB, PORTB, PINB, PCMSK0, 3)
+define_pin(12, DDRB, PORTB, PINB, PCMSK0, 4)
+define_pin(13, DDRB, PORTB, PINB, PCMSK0, 5)
 
 /*
 define_pin(a0, DDRC, PORTC, PINC, 0)
@@ -59,5 +63,14 @@ define_pin(a5, DDRC, PORTC, PINC, 5)
 */
 
 #undef define_pin
+
+static inline void pin_0to7_interrupt_enable()
+	{ PCICR |= _BV(PCIE2); }
+static inline void pin_0to7_interrupt_disable()
+	{ PCICR &= ~(_BV(PCIE2)); }
+static inline void pin_8to13_interrupt_enable()
+	{ PCICR |= _BV(PCIE0); }
+static inline void pin_8to13_interrupt_disable()
+	{ PCICR &= ~(_BV(PCIE0)); }
 
 #endif
