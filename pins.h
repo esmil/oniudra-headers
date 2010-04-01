@@ -32,6 +32,8 @@
 	static inline void pin##nr##_high()        { port |= _BV(bit);    } \
 	static inline void pin##nr##_low()         { port &= ~(_BV(bit)); } \
 	static inline void pin##nr##_toggle()      { pinx |= _BV(bit);    } \
+	static inline uint8_t pin##nr##_is_high() \
+		{ return port & _BV(bit); } \
 	static inline void pin##nr##_interrupt_mask() \
 		{ pcmsk |= _BV(bit); } \
 	static inline void pin##nr##_interrupt_unmask() \
