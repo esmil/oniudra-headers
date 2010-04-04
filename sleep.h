@@ -2,6 +2,7 @@
 #define _ARDUINO_SLEEP_H
 
 #include <avr/io.h>
+#include <avr/sleep.h>
 
 /* set sleep mode */
 static inline void
