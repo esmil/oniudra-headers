@@ -49,9 +49,9 @@ adc_start()                { ADCSRA |= _BV(ADSC); }
 static inline uint8_t
 adc_running()              { return ADCSRA & _BV(ADSC); }
 static inline void
-adc_trigger_auto()         { ADCSRA |= _BV(ADATE); }
+adc_trigger_enable()       { ADCSRA |= _BV(ADATE); }
 static inline void
-adc_trigger_manual()       { ADCSRA &= ~(_BV(ADATE)); }
+adc_trigger_disable()      { ADCSRA &= ~(_BV(ADATE)); }
 static inline uint8_t
 adc_interrupt_flag()       { return ADCSRA & _BV(ADIF); }
 static inline void
@@ -108,7 +108,7 @@ adc_clock_d128()
 }
 
 static inline void
-adc_trigger_free()
+adc_trigger_freerunning()
 {
 	ADCSRB = ADCSRB & ~(_BV(ADTS2) | _BV(ADTS1) | _BV(ADTS0));
 }
