@@ -58,7 +58,8 @@ serial_mode_8n2() { UCSR0C = _BV(USBS0) | _BV(UCSZ01) | _BV(UCSZ00); }
 static inline void
 serial_mode_8e2() { UCSR0C = _BV(UPM01) | _BV(USBS0) | _BV(UCSZ01) | _BV(UCSZ00); }
 static inline void
-serial_mode_8o2() {
+serial_mode_8o2()
+{
 	UCSR0C = _BV(UPM01) | _BV(UPM00) | _BV(USBS0) | _BV(UCSZ01) | _BV(UCSZ00);
 }
 
