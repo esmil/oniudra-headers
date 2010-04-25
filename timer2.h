@@ -25,50 +25,43 @@ timer2_clock_off()
 static inline void
 timer2_clock_d1()
 {
-	TCCR2B = (TCCR2B & ~(_BV(CS22) | _BV(CS21) | _BV(CS20)))
-	       | _BV(CS20);
+	TCCR2B = (TCCR2B & ~(_BV(CS22) | _BV(CS21))) | _BV(CS20);
 }
 
 static inline void
 timer2_clock_d8()
 {
-	TCCR2B = (TCCR2B & ~(_BV(CS22) | _BV(CS21) | _BV(CS20)))
-	       | _BV(CS21);
+	TCCR2B = (TCCR2B & ~(_BV(CS22) | _BV(CS20))) | _BV(CS21);
 }
 
 static inline void
 timer2_clock_d32()
 {
-	TCCR2B = (TCCR2B & ~(_BV(CS22) | _BV(CS21) | _BV(CS20)))
-	       | _BV(CS21) | _BV(CS20);
+	TCCR2B = (TCCR2B & ~(_BV(CS22))) | _BV(CS21) | _BV(CS20);
 }
 
 static inline void
 timer2_clock_d64()
 {
-	TCCR2B = (TCCR2B & ~(_BV(CS22) | _BV(CS21) | _BV(CS20)))
-	       | _BV(CS22);
+	TCCR2B = (TCCR2B & ~(_BV(CS21) | _BV(CS20))) | _BV(CS22);
 }
 
 static inline void
 timer2_clock_d128()
 {
-	TCCR2B = (TCCR2B & ~(_BV(CS22) | _BV(CS21) | _BV(CS20)))
-	       | _BV(CS22) | _BV(CS20);
+	TCCR2B = (TCCR2B & ~(_BV(CS21))) | _BV(CS22) | _BV(CS20);
 }
 
 static inline void
 timer2_clock_d256()
 {
-	TCCR2B = (TCCR2B & ~(_BV(CS22) | _BV(CS21) | _BV(CS20)))
-	       | _BV(CS22) | _BV(CS21);
+	TCCR2B = (TCCR2B & ~(_BV(CS20))) | _BV(CS22) | _BV(CS21);
 }
 
 static inline void
 timer2_clock_d1024()
 {
-	TCCR2B = (TCCR2B & ~(_BV(CS22) | _BV(CS21) | _BV(CS20)))
-	       | _BV(CS22) | _BV(CS21) | _BV(CS20);
+	TCCR2B = TCCR2B | _BV(CS22) | _BV(CS21) | _BV(CS20);
 }
 
 static inline uint8_t
@@ -93,22 +86,19 @@ timer2_pin11_off()
 static inline void
 timer2_pin11_toggle()
 {
-	TCCR2A = (TCCR2A & ~(_BV(COM2A1) | _BV(COM2A0)))
-	       | _BV(COM2A0);
+	TCCR2A = (TCCR2A & ~(_BV(COM2A1))) | _BV(COM2A0);
 }
 
 static inline void
 timer2_pin11_clear()
 {
-	TCCR2A = (TCCR2A & ~(_BV(COM2A1) | _BV(COM2A0)))
-	       | _BV(COM2A1);
+	TCCR2A = (TCCR2A & ~(_BV(COM2A0))) | _BV(COM2A1);
 }
 
 static inline void
 timer2_pin11_set()
 {
-	TCCR2A = (TCCR2A & ~(_BV(COM2A1) | _BV(COM2A0)))
-	       | _BV(COM2A1) | _BV(COM2A0);
+	TCCR2A = TCCR2A | _BV(COM2A1) | _BV(COM2A0);
 }
 
 static inline void
@@ -120,22 +110,19 @@ timer2_pin3_off()
 static inline void
 timer2_pin3_toggle()
 {
-	TCCR2A = (TCCR2A & ~(_BV(COM2B1) | _BV(COM2B0)))
-	       | _BV(COM2B0);
+	TCCR2A = (TCCR2A & ~(_BV(COM2B1))) | _BV(COM2B0);
 }
 
 static inline void
 timer2_pin3_clear()
 {
-	TCCR2A = (TCCR2A & ~(_BV(COM2B1) | _BV(COM2B0)))
-	       | _BV(COM2B1);
+	TCCR2A = (TCCR2A & ~(_BV(COM2B0))) | _BV(COM2B1);
 }
 
 static inline void
 timer2_pin3_set()
 {
-	TCCR2A = (TCCR2A & ~(_BV(COM2B1) | _BV(COM2B0)))
-	       | _BV(COM2B1) | _BV(COM2B0);
+	TCCR2A = TCCR2A | _BV(COM2B1) | _BV(COM2B0);
 }
 
 /* timer2 interrupts */

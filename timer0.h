@@ -25,50 +25,43 @@ timer0_clock_off()
 static inline void
 timer0_clock_d1()
 {
-	TCCR0B = (TCCR0B & ~(_BV(CS02) | _BV(CS01) | _BV(CS00)))
-	       | _BV(CS00);
+	TCCR0B = (TCCR0B & ~(_BV(CS02) | _BV(CS01))) | _BV(CS00);
 }
 
 static inline void
 timer0_clock_d8()
 {
-	TCCR0B = (TCCR0B & ~(_BV(CS02) | _BV(CS01) | _BV(CS00)))
-	       | _BV(CS01);
+	TCCR0B = (TCCR0B & ~(_BV(CS02) | _BV(CS00))) | _BV(CS01);
 }
 
 static inline void
 timer0_clock_d64()
 {
-	TCCR0B = (TCCR0B & ~(_BV(CS02) | _BV(CS01) | _BV(CS00)))
-	       | _BV(CS01) | _BV(CS00);
+	TCCR0B = (TCCR0B & ~(_BV(CS02))) | _BV(CS01) | _BV(CS00);
 }
 
 static inline void
 timer0_clock_d256()
 {
-	TCCR0B = (TCCR0B & ~(_BV(CS02) | _BV(CS01) | _BV(CS00)))
-	       | _BV(CS02);
+	TCCR0B = (TCCR0B & ~(_BV(CS01) | _BV(CS00))) | _BV(CS02);
 }
 
 static inline void
 timer0_clock_d1024()
 {
-	TCCR0B = (TCCR0B & ~(_BV(CS02) | _BV(CS01) | _BV(CS00)))
-	       | _BV(CS02) | _BV(CS00);
+	TCCR0B = (TCCR0B & ~(_BV(CS01))) | _BV(CS02) | _BV(CS00);
 }
 
 static inline void
 timer0_clock_external_falling()
 {
-	TCCR0B = (TCCR0B & ~(_BV(CS02) | _BV(CS01) | _BV(CS00)))
-	       | _BV(CS02) | _BV(CS01);
+	TCCR0B = (TCCR0B & ~(_BV(CS00))) | _BV(CS02) | _BV(CS01);
 }
 
 static inline void
 timer0_clock_external_rising()
 {
-	TCCR0B = (TCCR0B & ~(_BV(CS02) | _BV(CS01) | _BV(CS00)))
-	       | _BV(CS02) | _BV(CS01) | _BV(CS00);
+	TCCR0B = TCCR0B | _BV(CS02) | _BV(CS01) | _BV(CS00);
 }
 
 static inline uint8_t
@@ -93,22 +86,19 @@ timer0_pin6_off()
 static inline void
 timer0_pin6_toggle()
 {
-	TCCR0A = (TCCR0A & ~(_BV(COM0A1) | _BV(COM0A0)))
-	       | _BV(COM0A0);
+	TCCR0A = (TCCR0A & ~(_BV(COM0A1))) | _BV(COM0A0);
 }
 
 static inline void
 timer0_pin6_clear()
 {
-	TCCR0A = (TCCR0A & ~(_BV(COM0A1) | _BV(COM0A0)))
-	       | _BV(COM0A1);
+	TCCR0A = (TCCR0A & ~(_BV(COM0A0))) | _BV(COM0A1);
 }
 
 static inline void
 timer0_pin6_set()
 {
-	TCCR0A = (TCCR0A & ~(_BV(COM0A1) | _BV(COM0A0)))
-	       | _BV(COM0A1) | _BV(COM0A0);
+	TCCR0A = TCCR0A | _BV(COM0A1) | _BV(COM0A0);
 }
 
 static inline void
@@ -120,22 +110,19 @@ timer0_pin5_off()
 static inline void
 timer0_pin5_toggle()
 {
-	TCCR0A = (TCCR0A & ~(_BV(COM0B1) | _BV(COM0B0)))
-	       | _BV(COM0B0);
+	TCCR0A = (TCCR0A & ~(_BV(COM0B1))) | _BV(COM0B0);
 }
 
 static inline void
 timer0_pin5_clear()
 {
-	TCCR0A = (TCCR0A & ~(_BV(COM0B1) | _BV(COM0B0)))
-	       | _BV(COM0B1);
+	TCCR0A = (TCCR0A & ~(_BV(COM0B0))) | _BV(COM0B1);
 }
 
 static inline void
 timer0_pin5_set()
 {
-	TCCR0A = (TCCR0A & ~(_BV(COM0B1) | _BV(COM0B0)))
-	       | _BV(COM0B1) | _BV(COM0B0);
+	TCCR0A = TCCR0A | _BV(COM0B1) | _BV(COM0B0);
 }
 
 /* timer0 interrupts */
