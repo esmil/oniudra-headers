@@ -78,14 +78,20 @@ static inline void
 serial_interrupt_dre_enable()  { UCSR0B |= _BV(UDRIE0); }
 static inline void
 serial_interrupt_dre_disable() { UCSR0B &= ~(_BV(UDRIE0)); }
+static inline uint8_t
+serial_interrupt_dre_enabled() { return UCSR0B & _BV(UDRIE0); }
 static inline void
 serial_interrupt_rx_enable()   { UCSR0B |= _BV(RXCIE0); }
 static inline void
 serial_interrupt_rx_disable()  { UCSR0B &= ~(_BV(RXCIE0)); }
+static inline uint8_t
+serial_interrupt_rx_enabled()  { return UCSR0B & _BV(RXCIE0); }
 static inline void
 serial_interrupt_tx_enable()   { UCSR0B |= _BV(TXCIE0); }
 static inline void
 serial_interrupt_tx_disable()  { UCSR0B &= ~(_BV(TXCIE0)); }
+static inline uint8_t
+serial_interrupt_tx_enabled()  { return UCSR0B & _BV(TXCIE0); }
 
 #define serial_interrupt_dre()       ISR(USART_UDRE_vect)
 #define serial_interrupt_dre_naked() ISR(USART_UDRE_vect, ISR_NAKED)
