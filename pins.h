@@ -82,6 +82,23 @@ define_pin(a5, DDRC, PORTC, PINC, PCMSK1, 5)
 
 #undef define_pin
 
+#define pin_mode_output_(nr) pin##nr##_mode_output()
+#define pin_mode_output(nr) pin_mode_output_(nr)
+#define pin_mode_input_(nr) pin##nr##_mode_input()
+#define pin_mode_input(nr) pin_mode_input_(nr)
+#define pin_high_(nr) pin##nr##_high()
+#define pin_high(nr) pin_high_(nr)
+#define pin_low_(nr) pin##nr##_low()
+#define pin_low(nr) pin_low_(nr)
+#define pin_toggle_(nr) pin##nr##_toggle()
+#define pin_toggle(nr) pin_toggle_(nr)
+#define pin_is_high_(nr) pin##nr##_is_high()
+#define pin_is_high(nr) pin_is_high_(nr)
+#define pin_interrupt_mask_(nr) pin##nr##_interrupt_mask()
+#define pin_interrupt_mask(nr) pin_interrupt_mask_(nr)
+#define pin_interrupt_unmask_(nr) pin##nr##_interrupt_unmask()
+#define pin_interrupt_unmask(nr) pin_interrupt_unmask_(nr)
+
 #define pin_0to7_interrupt() ISR(PCINT2_vect)
 #define pin_0to7_interrupt_naked() ISR(PCINT2_vect, ISR_NAKED)
 #define pin_0to7_interrupt_empty() EMPTY_INTERRUPT(PCINT2_vect)
