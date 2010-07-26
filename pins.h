@@ -73,14 +73,12 @@ define_pin(11, DDRB, PORTB, PINB, PCMSK0, 3)
 define_pin(12, DDRB, PORTB, PINB, PCMSK0, 4)
 define_pin(13, DDRB, PORTB, PINB, PCMSK0, 5)
 
-/*
-define_pin(a0, DDRC, PORTC, PINC, 0)
-define_pin(a1, DDRC, PORTC, PINC, 1)
-define_pin(a2, DDRC, PORTC, PINC, 2)
-define_pin(a3, DDRC, PORTC, PINC, 3)
-define_pin(a4, DDRC, PORTC, PINC, 4)
-define_pin(a5, DDRC, PORTC, PINC, 5)
-*/
+define_pin(a0, DDRC, PORTC, PINC, PCMSK1, 0)
+define_pin(a1, DDRC, PORTC, PINC, PCMSK1, 1)
+define_pin(a2, DDRC, PORTC, PINC, PCMSK1, 2)
+define_pin(a3, DDRC, PORTC, PINC, PCMSK1, 3)
+define_pin(a4, DDRC, PORTC, PINC, PCMSK1, 4)
+define_pin(a5, DDRC, PORTC, PINC, PCMSK1, 5)
 
 #undef define_pin
 
