@@ -32,7 +32,7 @@ timer2_mode_ctc()           { TCCR2A = _BV(WGM21); }
 static inline void
 timer2_mode_fastpwm()       { TCCR2A = _BV(WGM21) | _BV(WGM20); }
 
-/* timer2 clocks select */
+/* timer2 clock select */
 static inline void
 timer2_clock_off()
 {

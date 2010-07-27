@@ -32,7 +32,7 @@ timer0_mode_ctc()           { TCCR0A = _BV(WGM01); }
 static inline void
 timer0_mode_fastpwm()       { TCCR0A = _BV(WGM01) | _BV(WGM00); }
 
-/* timer0 clocks select */
+/* timer0 clock select */
 static inline void
 timer0_clock_off()
 {
