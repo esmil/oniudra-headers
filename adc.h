@@ -176,5 +176,7 @@ static inline uint8_t
 adc_data_high() { return ADCH; }
 static inline uint8_t
 adc_data_low()  { return ADCL; }
+static inline uint16_t
+adc_data()      { return ADC; }
 
 #endif
