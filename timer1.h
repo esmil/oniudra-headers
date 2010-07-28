@@ -219,24 +219,14 @@ timer1_count_high()              { return TCNT1H; }
 static inline uint8_t
 timer1_count_low()               { return TCNT1L; }
 static inline uint16_t
-timer1_count()
-{
-	uint8_t high = OCR1AH;
-	uint8_t low  = OCR1AL;
-
-	return (high << 8) | low;
-}
+timer1_count()                   { return TCNT1; }
 
 static inline void
 timer1_count_high_set(uint8_t n) { TCNT1H = n; }
 static inline void
 timer1_count_low_set(uint8_t n)  { TCNT1L = n; }
 static inline void
-timer1_count_set(uint16_t n)
-{
-	timer1_count_high_set(n >> 8);
-	timer1_count_low_set(n & 0xff);
-}
+timer1_count_set(uint16_t n)     { TCNT1 = n; }
 
 /* timer1 compare registers */
 static inline uint8_t
@@ -244,48 +234,28 @@ timer1_compare_a_high()              { return OCR1AH; }
 static inline uint8_t
 timer1_compare_a_low()               { return OCR1AL; }
 static inline uint16_t
-timer1_compare_a()
-{
-	uint8_t high = OCR1AH;
-	uint8_t low  = OCR1AL;
-
-	return (high << 8) | low;
-}
+timer1_compare_a()                   { return OCR1A; }
 
 static inline uint8_t
 timer1_compare_b_high()              { return OCR1BH; }
 static inline uint8_t
 timer1_compare_b_low()               { return OCR1BL; }
 static inline uint16_t
-timer1_compare_b()
-{
-	uint8_t high = OCR1BH;
-	uint8_t low  = OCR1BL;
-
-	return (high << 8) | low;
-}
+timer1_compare_b()                   { return OCR1B; }
 
 static inline void
 timer1_compare_a_high_set(uint8_t v) { OCR1AH = v; }
 static inline void
 timer1_compare_a_low_set(uint8_t v)  { OCR1AL = v; }
 static inline void
-timer1_compare_a_set(uint16_t v)
-{
-	timer1_compare_a_high_set(v >> 8);
-	timer1_compare_a_low_set(v & 0xff);
-}
+timer1_compare_a_set(uint16_t v)     { OCR1A = v; }
 
 static inline void
 timer1_compare_b_high_set(uint8_t v) { OCR1BH = v; }
 static inline void
 timer1_compare_b_low_set(uint8_t v)  { OCR1BL = v; }
 static inline void
-timer1_compare_b_set(uint16_t v)
-{
-	timer1_compare_b_high_set(v >> 8);
-	timer1_compare_b_low_set(v & 0xff);
-}
+timer1_compare_b_set(uint16_t v)     { OCR1B = v; }
 
 /* timer1 flags */
 static inline void
