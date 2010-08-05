@@ -44,18 +44,24 @@
  * (PWM+ indicates the additional PWM pins on the ATmega168.)
  */
 
-#define define_pin(nr, ddr, port, pinx, pcmsk, bit) \
-	static inline void pin##nr##_mode_output() { ddr  |= _BV(bit);    } \
-	static inline void pin##nr##_mode_input()  { ddr  &= ~(_BV(bit)); } \
-	static inline void pin##nr##_high()        { port |= _BV(bit);    } \
-	static inline void pin##nr##_low()         { port &= ~(_BV(bit)); } \
-	static inline void pin##nr##_toggle()      { pinx |= _BV(bit);    } \
-	static inline uint8_t pin##nr##_is_high() \
-		{ return pinx & _BV(bit); } \
-	static inline void pin##nr##_interrupt_mask() \
-		{ pcmsk |= _BV(bit); } \
-	static inline void pin##nr##_interrupt_unmask() \
-		{ pcmsk &= ~(_BV(bit)); }
+#define define_pin(nr, ddr, port, pinx, pcmsk, bit)\
+	static inline void pin##nr##_mode_output() { ddr  |= _BV(bit);    }\
+	static inline void pin##nr##_mode_input()  { ddr  &= ~(_BV(bit)); }\
+	static inline void pin##nr##_high()        { port |= _BV(bit);    }\
+	static inline void pin##nr##_low()         { port &= ~(_BV(bit)); }\
+	static inline void pin##nr##_toggle()      { pinx |= _BV(bit);    }\
+	static inline uint8_t pin##nr##_is_high()\
+	{\
+		return pinx & _BV(bit);\
+	}\
+	static inline void pin##nr##_interrupt_mask()\
+	{\
+		pcmsk |= _BV(bit);\
+	}\
+	static inline void pin##nr##_interrupt_unmask()\
+	{\
+		pcmsk &= ~(_BV(bit));\
+	}
 
 define_pin( 0, DDRD, PORTD, PIND, PCMSK2, 0)
 define_pin( 1, DDRD, PORTD, PIND, PCMSK2, 1)
