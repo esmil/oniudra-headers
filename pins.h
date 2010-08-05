@@ -45,52 +45,46 @@
  * (PWM+ indicates the additional PWM pins on the ATmega168.)
  */
 
-#define INLINE __attribute__((always_inline)) inline
-#define define_pin(nr, ddr, port, pinx, pcmsk, bit)\
-	static INLINE void pin##nr##_mode_output() { ddr  |= _BV(bit);    }\
-	static INLINE void pin##nr##_mode_input()  { ddr  &= ~(_BV(bit)); }\
-	static INLINE void pin##nr##_high()        { port |= _BV(bit);    }\
-	static INLINE void pin##nr##_low()         { port &= ~(_BV(bit)); }\
-	static INLINE void pin##nr##_toggle()      { pinx |= _BV(bit);    }\
-	static inline uint8_t pin##nr##_is_high()\
-	{\
-		return pinx & _BV(bit);\
-	}\
-	static inline void pin##nr##_interrupt_mask()\
-	{\
-		pcmsk |= _BV(bit);\
-	}\
-	static inline void pin##nr##_interrupt_unmask()\
-	{\
-		pcmsk &= ~(_BV(bit));\
-	}
+#define define_pin(nr, ddr, port, pinx, bit)\
+	static __attribute__((always_inline)) inline void\
+	pin##nr##_mode_output() { ddr  |= _BV(bit); }\
+	static __attribute__((always_inline)) inline void\
+	pin##nr##_mode_input()  { ddr  &= ~(_BV(bit)); }\
+	static __attribute__((always_inline)) inline void\
+	pin##nr##_high()        { port |= _BV(bit); }\
+	static __attribute__((always_inline)) inline void\
+	pin##nr##_low()         { port &= ~(_BV(bit)); }\
+	static __attribute__((always_inline)) inline void\
+	pin##nr##_toggle()      { pinx |= _BV(bit); }\
+	static inline uint8_t\
+	pin##nr##_is_high()	{ return pinx & _BV(bit); }
 
-define_pin( 0, DDRD, PORTD, PIND, PCMSK2, 0)
-define_pin( 1, DDRD, PORTD, PIND, PCMSK2, 1)
-define_pin( 2, DDRD, PORTD, PIND, PCMSK2, 2)
-define_pin( 3, DDRD, PORTD, PIND, PCMSK2, 3)
-define_pin( 4, DDRD, PORTD, PIND, PCMSK2, 4)
-define_pin( 5, DDRD, PORTD, PIND, PCMSK2, 5)
-define_pin( 6, DDRD, PORTD, PIND, PCMSK2, 6)
-define_pin( 7, DDRD, PORTD, PIND, PCMSK2, 7)
+define_pin(0, DDRD, PORTD, PIND, 0)
+define_pin(1, DDRD, PORTD, PIND, 1)
+define_pin(2, DDRD, PORTD, PIND, 2)
+define_pin(3, DDRD, PORTD, PIND, 3)
+define_pin(4, DDRD, PORTD, PIND, 4)
+define_pin(5, DDRD, PORTD, PIND, 5)
+define_pin(6, DDRD, PORTD, PIND, 6)
+define_pin(7, DDRD, PORTD, PIND, 7)
 
-define_pin( 8, DDRB, PORTB, PINB, PCMSK0, 0)
-define_pin( 9, DDRB, PORTB, PINB, PCMSK0, 1)
-define_pin(10, DDRB, PORTB, PINB, PCMSK0, 2)
-define_pin(11, DDRB, PORTB, PINB, PCMSK0, 3)
-define_pin(12, DDRB, PORTB, PINB, PCMSK0, 4)
-define_pin(13, DDRB, PORTB, PINB, PCMSK0, 5)
+define_pin( 8, DDRB, PORTB, PINB, 0)
+define_pin( 9, DDRB, PORTB, PINB, 1)
+define_pin(10, DDRB, PORTB, PINB, 2)
+define_pin(11, DDRB, PORTB, PINB, 3)
+define_pin(12, DDRB, PORTB, PINB, 4)
+define_pin(13, DDRB, PORTB, PINB, 5)
 
-define_pin(a0, DDRC, PORTC, PINC, PCMSK1, 0)
-define_pin(a1, DDRC, PORTC, PINC, PCMSK1, 1)
-define_pin(a2, DDRC, PORTC, PINC, PCMSK1, 2)
-define_pin(a3, DDRC, PORTC, PINC, PCMSK1, 3)
-define_pin(a4, DDRC, PORTC, PINC, PCMSK1, 4)
-define_pin(a5, DDRC, PORTC, PINC, PCMSK1, 5)
+define_pin(a0, DDRC, PORTC, PINC, 0)
+define_pin(a1, DDRC, PORTC, PINC, 1)
+define_pin(a2, DDRC, PORTC, PINC, 2)
+define_pin(a3, DDRC, PORTC, PINC, 3)
+define_pin(a4, DDRC, PORTC, PINC, 4)
+define_pin(a5, DDRC, PORTC, PINC, 5)
 
 #undef define_pin
-#undef INLINE
 
+/* external interrupts */
 static inline void
 pin2_interrupt_mode_low()     { EICRA = EICRA & ~(_BV(ISC01) | _BV(ISC00)); }
 static inline void
@@ -134,6 +128,38 @@ pin3_interrupt_flag()         { return EIFR & INTF1; }
 static inline void
 pin3_interrupt_flag_clear()   { EIMSK |= _BV(INTF1); }
 
+/* pin change interrupts */
+#define define_pin_change_mask(nr, pcmsk, bit)\
+	static inline void\
+	pin##nr##_interrupt_mask()   { pcmsk |= _BV(bit); }\
+	static inline void\
+	pin##nr##_interrupt_unmask() { pcmsk &= ~(_BV(bit)); }
+
+define_pin_change_mask(0, PCMSK2, PCINT16)
+define_pin_change_mask(1, PCMSK2, PCINT17)
+define_pin_change_mask(2, PCMSK2, PCINT18)
+define_pin_change_mask(3, PCMSK2, PCINT19)
+define_pin_change_mask(4, PCMSK2, PCINT20)
+define_pin_change_mask(5, PCMSK2, PCINT21)
+define_pin_change_mask(6, PCMSK2, PCINT22)
+define_pin_change_mask(7, PCMSK2, PCINT23)
+
+define_pin_change_mask( 8, PCMSK0, PCINT0)
+define_pin_change_mask( 9, PCMSK0, PCINT1)
+define_pin_change_mask(10, PCMSK0, PCINT2)
+define_pin_change_mask(11, PCMSK0, PCINT3)
+define_pin_change_mask(12, PCMSK0, PCINT4)
+define_pin_change_mask(13, PCMSK0, PCINT5)
+
+define_pin_change_mask(a0, PCMSK1, PCINT8)
+define_pin_change_mask(a1, PCMSK1, PCINT9)
+define_pin_change_mask(a2, PCMSK1, PCINT10)
+define_pin_change_mask(a3, PCMSK1, PCINT11)
+define_pin_change_mask(a4, PCMSK1, PCINT12)
+define_pin_change_mask(a5, PCMSK1, PCINT13)
+
+#undef define_pin_change_mask
+
 #define pin_0to7_interrupt() ISR(PCINT2_vect)
 #define pin_0to7_interrupt_naked() ISR(PCINT2_vect, ISR_NAKED)
 #define pin_0to7_interrupt_empty() EMPTY_INTERRUPT(PCINT2_vect)
@@ -149,6 +175,7 @@ pin_8to13_interrupt_enable()  { PCICR |= _BV(PCIE0); }
 static inline void
 pin_8to13_interrupt_disable() { PCICR &= ~(_BV(PCIE0)); }
 
+/* macros for factoring out pin mappings */
 #define pin_mode_output_(nr) pin##nr##_mode_output()
 #define pin_mode_output(nr) pin_mode_output_(nr)
 #define pin_mode_input_(nr) pin##nr##_mode_input()
