@@ -88,6 +88,21 @@ define_pin(a5, DDRC, PORTC, PINC, PCMSK1, 5)
 
 #undef define_pin
 
+#define pin_0to7_interrupt() ISR(PCINT2_vect)
+#define pin_0to7_interrupt_naked() ISR(PCINT2_vect, ISR_NAKED)
+#define pin_0to7_interrupt_empty() EMPTY_INTERRUPT(PCINT2_vect)
+static inline void
+pin_0to7_interrupt_enable()   { PCICR |= _BV(PCIE2); }
+static inline void
+pin_0to7_interrupt_disable()  { PCICR &= ~(_BV(PCIE2)); }
+#define pin_8to13_interrupt() ISR(PCINT0_vect)
+#define pin_8to13_interrupt_naked() ISR(PCINT0_vect, ISR_NAKED)
+#define pin_8to13_interrupt_empty() EMPTY_INTERRUPT(PCINT0_vect)
+static inline void
+pin_8to13_interrupt_enable()  { PCICR |= _BV(PCIE0); }
+static inline void
+pin_8to13_interrupt_disable() { PCICR &= ~(_BV(PCIE0)); }
+
 #define pin_mode_output_(nr) pin##nr##_mode_output()
 #define pin_mode_output(nr) pin_mode_output_(nr)
 #define pin_mode_input_(nr) pin##nr##_mode_input()
@@ -104,20 +119,5 @@ define_pin(a5, DDRC, PORTC, PINC, PCMSK1, 5)
 #define pin_interrupt_mask(nr) pin_interrupt_mask_(nr)
 #define pin_interrupt_unmask_(nr) pin##nr##_interrupt_unmask()
 #define pin_interrupt_unmask(nr) pin_interrupt_unmask_(nr)
-
-#define pin_0to7_interrupt() ISR(PCINT2_vect)
-#define pin_0to7_interrupt_naked() ISR(PCINT2_vect, ISR_NAKED)
-#define pin_0to7_interrupt_empty() EMPTY_INTERRUPT(PCINT2_vect)
-static inline void
-pin_0to7_interrupt_enable()   { PCICR |= _BV(PCIE2); }
-static inline void
-pin_0to7_interrupt_disable()  { PCICR &= ~(_BV(PCIE2)); }
-#define pin_8to13_interrupt() ISR(PCINT0_vect)
-#define pin_8to13_interrupt_naked() ISR(PCINT0_vect, ISR_NAKED)
-#define pin_8to13_interrupt_empty() EMPTY_INTERRUPT(PCINT0_vect)
-static inline void
-pin_8to13_interrupt_enable()  { PCICR |= _BV(PCIE0); }
-static inline void
-pin_8to13_interrupt_disable() { PCICR &= ~(_BV(PCIE0)); }
 
 #endif
