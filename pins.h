@@ -18,6 +18,7 @@
 #ifndef _ARDUINO_PINS_H
 #define _ARDUINO_PINS_H
 
+#include <stdint.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
