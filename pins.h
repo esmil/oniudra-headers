@@ -45,12 +45,13 @@
  * (PWM+ indicates the additional PWM pins on the ATmega168.)
  */
 
+#define INLINE __attribute__((always_inline)) inline
 #define define_pin(nr, ddr, port, pinx, pcmsk, bit)\
-	static inline void pin##nr##_mode_output() { ddr  |= _BV(bit);    }\
-	static inline void pin##nr##_mode_input()  { ddr  &= ~(_BV(bit)); }\
-	static inline void pin##nr##_high()        { port |= _BV(bit);    }\
-	static inline void pin##nr##_low()         { port &= ~(_BV(bit)); }\
-	static inline void pin##nr##_toggle()      { pinx |= _BV(bit);    }\
+	static INLINE void pin##nr##_mode_output() { ddr  |= _BV(bit);    }\
+	static INLINE void pin##nr##_mode_input()  { ddr  &= ~(_BV(bit)); }\
+	static INLINE void pin##nr##_high()        { port |= _BV(bit);    }\
+	static INLINE void pin##nr##_low()         { port &= ~(_BV(bit)); }\
+	static INLINE void pin##nr##_toggle()      { pinx |= _BV(bit);    }\
 	static inline uint8_t pin##nr##_is_high()\
 	{\
 		return pinx & _BV(bit);\
@@ -88,6 +89,7 @@ define_pin(a4, DDRC, PORTC, PINC, PCMSK1, 4)
 define_pin(a5, DDRC, PORTC, PINC, PCMSK1, 5)
 
 #undef define_pin
+#undef INLINE
 
 #define pin_0to7_interrupt() ISR(PCINT2_vect)
 #define pin_0to7_interrupt_naked() ISR(PCINT2_vect, ISR_NAKED)
