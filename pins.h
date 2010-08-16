@@ -91,6 +91,49 @@ define_pin(a5, DDRC, PORTC, PINC, PCMSK1, 5)
 #undef define_pin
 #undef INLINE
 
+static inline void
+pin2_interrupt_mode_low()     { EICRA = EICRA & ~(_BV(ISC01) | _BV(ISC00)); }
+static inline void
+pin2_interrupt_mode_change()  { EICRA = (EICRA & ~(_BV(ISC01))) | _BV(ISC00); }
+static inline void
+pin2_interrupt_mode_falling() { EICRA = (EICRA & ~(_BV(ISC00))) | _BV(ISC01); }
+static inline void
+pin2_interrupt_mode_rising()  { EICRA = EICRA | _BV(ISC01) | _BV(ISC00); }
+
+static inline void
+pin3_interrupt_mode_low()     { EICRA = EICRA & ~(_BV(ISC11) | _BV(ISC10)); }
+static inline void
+pin3_interrupt_mode_change()  { EICRA = (EICRA & ~(_BV(ISC11))) | _BV(ISC10); }
+static inline void
+pin3_interrupt_mode_falling() { EICRA = (EICRA & ~(_BV(ISC10))) | _BV(ISC11); }
+static inline void
+pin3_interrupt_mode_rising()  { EICRA = EICRA | _BV(ISC11) | _BV(ISC10); }
+
+#define pin2_interrupt() ISR(INT0_vect)
+#define pin2_interrupt_naked() ISR(INT0_vect, ISR_NAKED)
+#define pin2_interrupt_empty() EMPTY_INTERRUPT(INT0_vect)
+static inline void
+pin2_interrupt_enable()       { EIMSK |= _BV(INT0); }
+static inline void
+pin2_interrupt_disable()      { EIMSK &= ~(_BV(INT0)); }
+
+#define pin3_interrupt() ISR(INT1_vect)
+#define pin3_interrupt_naked() ISR(INT1_vect, ISR_NAKED)
+#define pin3_interrupt_empty() EMPTY_INTERRUPT(INT1_vect)
+static inline void
+pin3_interrupt_enable()       { EIMSK |= _BV(INT1); }
+static inline void
+pin3_interrupt_disable()      { EIMSK &= ~(_BV(INT1)); }
+
+static inline uint8_t
+pin2_interrupt_flag()         { return EIFR & INTF0; }
+static inline void
+pin2_interrupt_flag_clear()   { EIMSK |= _BV(INTF0); }
+static inline uint8_t
+pin3_interrupt_flag()         { return EIFR & INTF1; }
+static inline void
+pin3_interrupt_flag_clear()   { EIMSK |= _BV(INTF1); }
+
 #define pin_0to7_interrupt() ISR(PCINT2_vect)
 #define pin_0to7_interrupt_naked() ISR(PCINT2_vect, ISR_NAKED)
 #define pin_0to7_interrupt_empty() EMPTY_INTERRUPT(PCINT2_vect)
