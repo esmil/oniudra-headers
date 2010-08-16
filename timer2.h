@@ -184,7 +184,7 @@ timer2_compare_b_set(uint8_t v) { OCR2B = v; }
 
 /* timer2 flags */
 static inline void
-timer2_flags_clear() { TIFR2 = 0; }
+timer2_flags_clear() { TIFR2 = 7; }
 static inline uint8_t
 timer2_flag_ovf()    { return TIFR2 & _BV(TOV2); }
 static inline uint8_t

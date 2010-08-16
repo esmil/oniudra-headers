@@ -259,7 +259,7 @@ timer1_compare_b_set(uint16_t v)     { OCR1B = v; }
 
 /* timer1 flags */
 static inline void
-timer1_flags_clear()   { TIFR1 = 0; }
+timer1_flags_clear()   { TIFR1 = 7; }
 static inline uint8_t
 timer1_flag_overflow() { return TIFR1 & _BV(TOV1); }
 static inline uint8_t

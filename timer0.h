@@ -184,7 +184,7 @@ timer0_compare_b_set(uint8_t v) { OCR0B = v; }
 
 /* timer0 flags */
 static inline void
-timer0_flags_clear() { TIFR0 = 0; }
+timer0_flags_clear() { TIFR0 = 7; }
 static inline uint8_t
 timer0_flag_ovf()    { return TIFR0 & _BV(TOV0); }
 static inline uint8_t
