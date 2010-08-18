@@ -174,6 +174,13 @@ static inline void
 pin_8to13_interrupt_enable()  { PCICR |= _BV(PCIE0); }
 static inline void
 pin_8to13_interrupt_disable() { PCICR &= ~(_BV(PCIE0)); }
+#define pin_A0toA5_interrupt() ISR(PCINT1_vect)
+#define pin_A0toA5_interrupt_naked() ISR(PCINT1_vect, ISR_NAKED)
+#define pin_A0toA5_interrupt_empty() EMPTY_INTERRUPT(PCINT1_vect)
+static inline void
+pin_A0toA5_interrupt_enable()  { PCICR |= _BV(PCIE1); }
+static inline void
+pin_A0toA5_interrupt_disable() { PCICR &= ~(_BV(PCIE1)); }
 
 /* enable/disable digital input */
 #define define_pin_digital_input(nr, didr, bit)\
