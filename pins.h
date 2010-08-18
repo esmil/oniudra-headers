@@ -75,12 +75,12 @@ define_pin(11, DDRB, PORTB, PINB, 3)
 define_pin(12, DDRB, PORTB, PINB, 4)
 define_pin(13, DDRB, PORTB, PINB, 5)
 
-define_pin(a0, DDRC, PORTC, PINC, 0)
-define_pin(a1, DDRC, PORTC, PINC, 1)
-define_pin(a2, DDRC, PORTC, PINC, 2)
-define_pin(a3, DDRC, PORTC, PINC, 3)
-define_pin(a4, DDRC, PORTC, PINC, 4)
-define_pin(a5, DDRC, PORTC, PINC, 5)
+define_pin(A0, DDRC, PORTC, PINC, 0)
+define_pin(A1, DDRC, PORTC, PINC, 1)
+define_pin(A2, DDRC, PORTC, PINC, 2)
+define_pin(A3, DDRC, PORTC, PINC, 3)
+define_pin(A4, DDRC, PORTC, PINC, 4)
+define_pin(A5, DDRC, PORTC, PINC, 5)
 
 #undef define_pin
 
@@ -151,12 +151,12 @@ define_pin_change_mask(11, PCMSK0, PCINT3)
 define_pin_change_mask(12, PCMSK0, PCINT4)
 define_pin_change_mask(13, PCMSK0, PCINT5)
 
-define_pin_change_mask(a0, PCMSK1, PCINT8)
-define_pin_change_mask(a1, PCMSK1, PCINT9)
-define_pin_change_mask(a2, PCMSK1, PCINT10)
-define_pin_change_mask(a3, PCMSK1, PCINT11)
-define_pin_change_mask(a4, PCMSK1, PCINT12)
-define_pin_change_mask(a5, PCMSK1, PCINT13)
+define_pin_change_mask(A0, PCMSK1, PCINT8)
+define_pin_change_mask(A1, PCMSK1, PCINT9)
+define_pin_change_mask(A2, PCMSK1, PCINT10)
+define_pin_change_mask(A3, PCMSK1, PCINT11)
+define_pin_change_mask(A4, PCMSK1, PCINT12)
+define_pin_change_mask(A5, PCMSK1, PCINT13)
 
 #undef define_pin_change_mask
 
@@ -185,12 +185,12 @@ pin_8to13_interrupt_disable() { PCICR &= ~(_BV(PCIE0)); }
 define_pin_digital_input(6, DIDR1, AIN0D)
 define_pin_digital_input(7, DIDR1, AIN1D)
 
-define_pin_digital_input(a0, DIDR0, ADC0D)
-define_pin_digital_input(a1, DIDR0, ADC1D)
-define_pin_digital_input(a2, DIDR0, ADC2D)
-define_pin_digital_input(a3, DIDR0, ADC3D)
-define_pin_digital_input(a4, DIDR0, ADC4D)
-define_pin_digital_input(a5, DIDR0, ADC5D)
+define_pin_digital_input(A0, DIDR0, ADC0D)
+define_pin_digital_input(A1, DIDR0, ADC1D)
+define_pin_digital_input(A2, DIDR0, ADC2D)
+define_pin_digital_input(A3, DIDR0, ADC3D)
+define_pin_digital_input(A4, DIDR0, ADC4D)
+define_pin_digital_input(A5, DIDR0, ADC5D)
 
 #undef define_pin_digital_input
 
