@@ -189,6 +189,55 @@ timer1_clock_reset()
 	GTCCR |= _BV(PSRSYNC);
 }
 
+/* timer1 pins */
+static inline void
+timer1_pin9_off()
+{
+	TCCR1A = (TCCR1A & ~(_BV(COM1A1) | _BV(COM1A0)));
+}
+
+static inline void
+timer1_pin9_toggle()
+{
+	TCCR1A = (TCCR1A & ~(_BV(COM1A1))) | _BV(COM1A0);
+}
+
+static inline void
+timer1_pin9_clear()
+{
+	TCCR1A = (TCCR1A & ~(_BV(COM1A0))) | _BV(COM1A1);
+}
+
+static inline void
+timer1_pin9_set()
+{
+	TCCR1A = TCCR1A | _BV(COM1A1) | _BV(COM1A0);
+}
+
+static inline void
+timer1_pin10_off()
+{
+	TCCR1A = (TCCR1A & ~(_BV(COM1B1) | _BV(COM1B0)));
+}
+
+static inline void
+timer1_pin10_toggle()
+{
+	TCCR1A = (TCCR1A & ~(_BV(COM1B1))) | _BV(COM1B0);
+}
+
+static inline void
+timer1_pin10_clear()
+{
+	TCCR1A = (TCCR1A & ~(_BV(COM1B0))) | _BV(COM1B1);
+}
+
+static inline void
+timer1_pin10_set()
+{
+	TCCR1A = TCCR1A | _BV(COM1B1) | _BV(COM1B0);
+}
+
 /* timer1 interrupts */
 static inline void
 timer1_interrupt_ovf_enable()  { TIMSK1 |= _BV(TOIE1); }
