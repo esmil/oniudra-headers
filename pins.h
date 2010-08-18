@@ -175,6 +175,25 @@ pin_8to13_interrupt_enable()  { PCICR |= _BV(PCIE0); }
 static inline void
 pin_8to13_interrupt_disable() { PCICR &= ~(_BV(PCIE0)); }
 
+/* enable/disable digital input */
+#define define_pin_digital_input(nr, didr, bit)\
+	static inline void\
+	pin##nr##_digital_input_disable() { didr |= _BV(bit); }\
+	static inline void\
+	pin##nr##_digital_input_enable()  { didr &= ~(_BV(bit)); }
+
+define_pin_digital_input(6, DIDR1, AIN0D)
+define_pin_digital_input(7, DIDR1, AIN1D)
+
+define_pin_digital_input(a0, DIDR0, ADC0D)
+define_pin_digital_input(a1, DIDR0, ADC1D)
+define_pin_digital_input(a2, DIDR0, ADC2D)
+define_pin_digital_input(a3, DIDR0, ADC3D)
+define_pin_digital_input(a4, DIDR0, ADC4D)
+define_pin_digital_input(a5, DIDR0, ADC5D)
+
+#undef define_pin_digital_input
+
 /* macros for factoring out pin mappings */
 #define pin_mode_output_(nr) pin##nr##_mode_output()
 #define pin_mode_output(nr) pin_mode_output_(nr)
@@ -192,5 +211,9 @@ pin_8to13_interrupt_disable() { PCICR &= ~(_BV(PCIE0)); }
 #define pin_interrupt_mask(nr) pin_interrupt_mask_(nr)
 #define pin_interrupt_unmask_(nr) pin##nr##_interrupt_unmask()
 #define pin_interrupt_unmask(nr) pin_interrupt_unmask_(nr)
+#define pin_digital_input_disable_(nr) pin##nr##_digital_input_disable()
+#define pin_digital_input_disable(nr) pin_digital_input_disable_(nr)
+#define pin_digital_input_enable_(nr) pin##nr##_digital_input_enable()
+#define pin_digital_input_enable(nr) pin_digital_input_enable_(nr)
 
 #endif
