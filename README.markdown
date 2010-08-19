@@ -8,11 +8,11 @@ About
 This is a collection of inline functions and macros I use for programming
 my [Arduino][1] in pure old C. It enables me to write simply
 
-    pin11_mode_input();
+    pin12_mode_input();
 
 instead of the more cryptic
 
-    DDRB &= ~(_BV(3));
+    DDRB &= ~(_BV(4));
 
 and since GCC is clever there is absolutely no overhead in doing this.
 
@@ -48,17 +48,17 @@ pin 13.
             return 0;
     }
 
-See my [power meter][4] code for a larger example. There you can also
+See the [doorduino][4] code for a larger example. There you can also
 find a [Makefile][5] for compiling and uploading Arduino programs.
 
-[4]: http://github.com/esmil/power_meter
-[5]: http://github.com/esmil/power_meter/blob/master/Makefile
+[4]: http://github.com/labitat/doorduino
+[5]: http://github.com/labitat/doorduino/blob/master/Makefile
 
 License
 -------
 
 arduino-headers is free software. It is distributed under the terms of
-the [GNU General Public License][5]
+the [GNU General Public License][6]
 
 [6]: http://www.fsf.org/licensing/licenses/gpl.html
 
