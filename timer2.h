@@ -24,13 +24,28 @@
 
 /* timer2 mode select */
 static inline void
-timer2_mode_normal()        { TCCR2A = 0; }
+timer2_mode_normal()
+{
+	TCCR2A = TCCR2A & ~(_BV(WGM21) | _BV(WGM20));
+}
+
 static inline void
-timer2_mode_phase_correct() { TCCR2A = _BV(WGM20); }
+timer2_mode_phase_correct()
+{
+	TCCR2A = (TCCR2A & ~(_BV(WGM21))) | _BV(WGM20);
+}
+
 static inline void
-timer2_mode_ctc()           { TCCR2A = _BV(WGM21); }
+timer2_mode_ctc()
+{
+	TCCR2A = (TCCR2A & ~(_BV(WGM20))) | _BV(WGM21);
+}
+
 static inline void
-timer2_mode_fastpwm()       { TCCR2A = _BV(WGM21) | _BV(WGM20); }
+timer2_mode_fastpwm()
+{
+	TCCR2A = TCCR2A | _BV(WGM21) | _BV(WGM20);
+}
 
 /* timer2 clock select */
 static inline void
