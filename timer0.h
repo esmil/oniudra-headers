@@ -47,6 +47,11 @@ timer0_mode_fastpwm()
 	TCCR0A = TCCR0A | _BV(WGM01) | _BV(WGM00);
 }
 
+static inline void
+timer0_top_max() { TCCR0B &= ~(_BV(WGM02)); }
+static inline void
+timer0_top_a()   { TCCR0B |= _BV(WGM02); }
+
 /* timer0 clock select */
 static inline void
 timer0_clock_off()

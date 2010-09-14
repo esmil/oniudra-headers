@@ -47,6 +47,11 @@ timer2_mode_fastpwm()
 	TCCR2A = TCCR2A | _BV(WGM21) | _BV(WGM20);
 }
 
+static inline void
+timer2_top_max() { TCCR2B &= ~(_BV(WGM22)); }
+static inline void
+timer2_top_a()   { TCCR2B |= _BV(WGM22); }
+
 /* timer2 clock select */
 static inline void
 timer2_clock_off()
