@@ -101,6 +101,11 @@ timer2_clock_d1024()
 	TCCR2B = TCCR2B | _BV(CS22) | _BV(CS21) | _BV(CS20);
 }
 
+static inline void
+timer2_clock_internal() { ASSR &= ~(_BV(AS2)); }
+static inline void
+timer2_clock_external() { ASSR |= _BV(AS2); }
+
 static inline uint8_t
 timer2_clock_running()
 {
