@@ -73,7 +73,7 @@ adc_trigger_disable()      { ADCSRA &= ~(_BV(ADATE)); }
 static inline uint8_t
 adc_interrupt_flag()       { return ADCSRA & _BV(ADIF); }
 static inline void
-adc_interrupt_flag_clear() { ADCSRA &= ~(_BV(ADIF)); }
+adc_interrupt_flag_clear() { ADCSRA |= _BV(ADIF); }
 static inline void
 adc_interrupt_enable()     { ADCSRA |= _BV(ADIE); }
 static inline void
