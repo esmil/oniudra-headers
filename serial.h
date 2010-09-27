@@ -112,15 +112,15 @@ serial_mode_8o2()
 	       | _BV(UPM01) | _BV(UPM00) | _BV(USBS0) | _BV(UCSZ01) | _BV(UCSZ00);
 }
 
-/* enable/disable */
+/* receiver and transmitter */
 static inline void
-serial_off()       { UCSR0B = 0; }
+serial_receiver_enable()     { UCSR0B |= _BV(RXEN0); }
 static inline void
-serial_rx()        { UCSR0B = _BV(RXEN0); }
+serial_receiver_disable()    { UCSR0B &= ~(_BV(RXEN0)); }
 static inline void
-serial_tx()        { UCSR0B = _BV(TXEN0); }
+serial_transmitter_enable()  { UCSR0B |= _BV(TXEN0); }
 static inline void
-serial_rxtx()      { UCSR0B = _BV(RXEN0) | _BV(TXEN0); }
+serial_transmitter_disable() { UCSR0B &= ~(_BV(TXEN0)); }
 
 /* interrupts */
 static inline void
