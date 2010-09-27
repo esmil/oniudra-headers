@@ -98,7 +98,68 @@ serial_baud_500k()
 	UBRR0 = 1;
 }
 
-/* mode settings */
+/* bit size */
+static inline void
+serial_bits_5()
+{
+	UCSR0B &= ~(_BV(UCSZ02));
+	UCSR0C = UCSR0C & ~(_BV(UCSZ01) | _BV(UCSZ00));
+}
+
+static inline void
+serial_bits_6()
+{
+	UCSR0B &= ~(_BV(UCSZ02));
+	UCSR0C = (UCSR0C & ~(_BV(UCSZ01))) | _BV(UCSZ00);
+}
+
+static inline void
+serial_bits_7()
+{
+	UCSR0B &= ~(_BV(UCSZ02));
+	UCSR0C = (UCSR0C & ~(_BV(UCSZ00))) | _BV(UCSZ01);
+}
+
+static inline void
+serial_bits_8()
+{
+	UCSR0B &= ~(_BV(UCSZ02));
+	UCSR0C = UCSR0C | _BV(UCSZ01) | _BV(UCSZ00);
+}
+
+static inline void
+serial_bits_9()
+{
+	UCSR0B |= _BV(UCSZ02);
+	UCSR0C = UCSR0C | _BV(UCSZ01) | _BV(UCSZ00);
+}
+
+/* parity */
+static inline void
+serial_parity_off()
+{
+	UCSR0C = UCSR0C & ~(_BV(UPM01) | _BV(UPM00));
+}
+
+static inline void
+serial_parity_even()
+{
+	UCSR0C = (UCSR0C & ~(_BV(UPM00))) | _BV(UPM01);
+}
+
+static inline void
+serial_parity_odd()
+{
+	UCSR0C = UCSR0C | _BV(UPM01) | _BV(UPM00);
+}
+
+/* stop bits */
+static inline void
+serial_stopbits_1() { UCSR0C &= ~(_BV(USBS0)); }
+static inline void
+serial_stopbits_2() { UCSR0C |= _BV(USBS0); }
+
+/* combined mode settings */
 static inline void
 serial_mode_8n1()
 {
