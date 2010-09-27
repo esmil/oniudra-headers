@@ -65,19 +65,51 @@ serial_baud_500k()
 
 /* mode settings */
 static inline void
-serial_mode_8n1() { UCSR0C = _BV(UCSZ01) | _BV(UCSZ00); }
+serial_mode_8n1()
+{
+	UCSR0B &= ~(_BV(UCSZ02));
+	UCSR0C = (UCSR0C & ~(_BV(UPM01) | _BV(UPM00) | _BV(USBS0)))
+	       | _BV(UCSZ01) | _BV(UCSZ00);
+}
+
 static inline void
-serial_mode_8e1() { UCSR0C = _BV(UPM01) | _BV(UCSZ01) | _BV(UCSZ00); }
+serial_mode_8e1()
+{
+	UCSR0B &= ~(_BV(UCSZ02));
+	UCSR0C = (UCSR0C & ~(_BV(UPM00) | _BV(USBS0)))
+	       | _BV(UPM01) | _BV(UCSZ01) | _BV(UCSZ00);
+}
+
 static inline void
-serial_mode_8o1() { UCSR0C = _BV(UPM01) | _BV(UPM00) | _BV(UCSZ01) | _BV(UCSZ00); }
+serial_mode_8o1()
+{
+	UCSR0B &= ~(_BV(UCSZ02));
+	UCSR0C = (UCSR0C & ~(_BV(USBS0)))
+	       | _BV(UPM01) | _BV(UPM00) | _BV(UCSZ01) | _BV(UCSZ00);
+}
+
 static inline void
-serial_mode_8n2() { UCSR0C = _BV(USBS0) | _BV(UCSZ01) | _BV(UCSZ00); }
+serial_mode_8n2()
+{
+	UCSR0B &= ~(_BV(UCSZ02));
+	UCSR0C = (UCSR0C & ~(_BV(UPM01) | _BV(UPM00)))
+	       | _BV(USBS0) | _BV(UCSZ01) | _BV(UCSZ00);
+}
+
 static inline void
-serial_mode_8e2() { UCSR0C = _BV(UPM01) | _BV(USBS0) | _BV(UCSZ01) | _BV(UCSZ00); }
+serial_mode_8e2()
+{
+	UCSR0B &= ~(_BV(UCSZ02));
+	UCSR0C = (UCSR0C & ~(_BV(UPM00)))
+	       | _BV(UPM01) | _BV(USBS0) | _BV(UCSZ01) | _BV(UCSZ00);
+}
+
 static inline void
 serial_mode_8o2()
 {
-	UCSR0C = _BV(UPM01) | _BV(UPM00) | _BV(USBS0) | _BV(UCSZ01) | _BV(UCSZ00);
+	UCSR0B &= ~(_BV(UCSZ02));
+	UCSR0C = UCSR0C
+	       | _BV(UPM01) | _BV(UPM00) | _BV(USBS0) | _BV(UCSZ01) | _BV(UCSZ00);
 }
 
 /* enable/disable */
