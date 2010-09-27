@@ -24,43 +24,78 @@
 
 /* baud settings */
 static inline void
+serial_baud_2400()
+{
+	UCSR0A = (UCSR0A & ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0)))
+	       | _BV(U2X0);
+	UBRR0 = 832;
+}
+
+static inline void
+serial_baud_4800()
+{
+	UCSR0A = (UCSR0A & ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0)))
+	       | _BV(U2X0);
+	UBRR0 = 416;
+}
+
+static inline void
 serial_baud_9600()
 {
-	UCSR0A = 0;
-	UBRR0H = 0;
-	UBRR0L = 103;
+	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0))
+	UBRR0 = 103;
 }
 
 static inline void
 serial_baud_14400()
 {
-	UCSR0A = _BV(U2X0);
-	UBRR0H = 0;
-	UBRR0L = 138;
+	UCSR0A = (UCSR0A & ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0)))
+	       | _BV(U2X0);
+	UBRR0 = 138;
+}
+
+static inline void
+serial_baud_19200()
+{
+	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0))
+	UBRR0 = 51;
+}
+
+static inline void
+serial_baud_28800()
+{
+	UCSR0A = (UCSR0A & ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0)))
+	       | _BV(U2X0);
+	UBRR0 = 68;
+}
+
+static inline void
+serial_baud_38400()
+{
+	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0))
+	UBRR0 = 25;
 }
 
 static inline void
 serial_baud_57600()
 {
-	UCSR0A = _BV(U2X0);
-	UBRR0H = 0;
-	UBRR0L = 34;
+	UCSR0A = (UCSR0A & ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0)))
+	       | _BV(U2X0);
+	UBRR0 = 34;
 }
 
 static inline void
 serial_baud_250k()
 {
-	UCSR0A = 0;
-	UBRR0H = 0;
-	UBRR0L = 3;
+	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0))
+	UBRR0 = 3;
 }
 
 static inline void
 serial_baud_500k()
 {
-	UCSR0A = 0;
-	UBRR0H = 0;
-	UBRR0L = 1;
+	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0))
+	UBRR0 = 1;
 }
 
 /* mode settings */
