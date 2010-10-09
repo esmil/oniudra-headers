@@ -16,7 +16,7 @@
  */
 
 #if defined(__AVR_ATmega8__)
-#  error "arduino/pins.h: Not implemented for ATmega8 chips yet"
+#  include <arduino/ATmega8/pins.h>
 #elif defined(__AVR_ATmega328P__)
 #  include <arduino/ATmega328P/pins.h>
 #elif defined(__AVR_ATmega1280__)
