@@ -20,7 +20,7 @@
 #elif defined(__AVR_ATmega328P__)
 #  include <arduino/ATmega328P/pins.h>
 #elif defined(__AVR_ATmega1280__)
-#  error "arduino/pins.h: Not implemented for ATmega1280 chips yet"
+#  include <arduino/ATmega1280/pins.h>
 #else
 #  error "arduino/pins.h: Unknown chip type"
 #endif
