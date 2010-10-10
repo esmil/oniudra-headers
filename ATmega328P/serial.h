@@ -42,7 +42,7 @@ serial_baud_4800()
 static inline void
 serial_baud_9600()
 {
-	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0))
+	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0));
 	UBRR0 = 103;
 }
 
@@ -57,7 +57,7 @@ serial_baud_14400()
 static inline void
 serial_baud_19200()
 {
-	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0))
+	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0));
 	UBRR0 = 51;
 }
 
@@ -72,7 +72,7 @@ serial_baud_28800()
 static inline void
 serial_baud_38400()
 {
-	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0))
+	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0));
 	UBRR0 = 25;
 }
 
@@ -87,14 +87,14 @@ serial_baud_57600()
 static inline void
 serial_baud_250k()
 {
-	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0))
+	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0));
 	UBRR0 = 3;
 }
 
 static inline void
 serial_baud_500k()
 {
-	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0))
+	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0));
 	UBRR0 = 1;
 }
 
