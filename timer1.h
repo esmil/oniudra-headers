@@ -21,6 +21,10 @@
 #  include <arduino/ATmega328P/timer1.h>
 #elif defined(__AVR_ATmega1280__)
 #  error "arduino/timer1.h: Not implemented for ATmega1280 chips yet"
+#elif defined(__AVR_ATtiny25__) \
+   || defined(__AVR_ATtiny45__) \
+   || defined(__AVR_ATtiny85__)
+#  error "arduino/timer1.h: Not implemented for ATtiny25/45/85 chips yet"
 #else
 #  error "arduino/timer1.h: Unknown chip type"
 #endif

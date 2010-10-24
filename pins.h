@@ -15,12 +15,17 @@
  * along with arduino-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
 #if defined(__AVR_ATmega8__)
 #  include <arduino/ATmega8/pins.h>
 #elif defined(__AVR_ATmega328P__)
 #  include <arduino/ATmega328P/pins.h>
 #elif defined(__AVR_ATmega1280__)
 #  include <arduino/ATmega1280/pins.h>
+#elif defined(__AVR_ATtiny25__) \
+   || defined(__AVR_ATtiny45__) \
+   || defined(__AVR_ATtiny85__)
+#  include <arduino/ATtiny/pins.h>
 #else
 #  error "arduino/pins.h: Unknown chip type"
 #endif

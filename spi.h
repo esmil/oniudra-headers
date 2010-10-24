@@ -21,6 +21,10 @@
 #  include <arduino/ATmega328P/spi.h>
 #elif defined(__AVR_ATmega1280__)
 #  error "arduino/spi.h: Not implemented for ATmega1280 chips yet"
+#elif defined(__AVR_ATtiny25__) \
+   || defined(__AVR_ATtiny45__) \
+   || defined(__AVR_ATtiny85__)
+#  error "arduino/spi.h: Not implemented for ATtiny25/45/85 chips yet"
 #else
 #  error "arduino/spi.h: Unknown chip type"
 #endif
