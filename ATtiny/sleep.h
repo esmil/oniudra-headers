@@ -15,16 +15,28 @@
  * along with arduino-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if defined(__AVR_ATmega8__)
-#  include <arduino/ATmega8/sleep.h>
-#elif defined(__AVR_ATmega328P__)
-#  include <arduino/ATmega328P/sleep.h>
-#elif defined(__AVR_ATmega1280__)
-#  error "arduino/sleep.h: Not implemented for ATmega1280 chips yet"
-#elif defined(__AVR_ATtiny25__) \
-   || defined(__AVR_ATtiny45__) \
-   || defined(__AVR_ATtiny85__)
-#  include <arduino/ATtiny/sleep.h>
-#else
-#  error "arduino/sleep.h: Unknown chip type"
+#ifndef _ARDUINO_SLEEP_H
+#define _ARDUINO_SLEEP_H
+
+#include <avr/io.h>
+#include <avr/sleep.h>
+
+/* set sleep mode */
+static inline void
+sleep_mode_idle()
+{
+	MCUCR = MCUCR & ~(_BV(SM1) | _BV(SM0));
+}
+
+static inline void
+sleep_mode_noise_reduction()
+{
+	MCUCR = (MCUCR & ~(_BV(SM1))) | _BV(SM0);
+}
+
+static inline void
+sleep_mode_power_down()
+{
+	MCUCR = (MCUCR & ~(_BV(SM0))) | _BV(SM1);
+}
 #endif
