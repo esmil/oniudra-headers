@@ -15,10 +15,10 @@
  * along with arduino-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #if defined(__AVR_ATmega8__)
 #  include <arduino/ATmega8/pins.h>
-#elif defined(__AVR_ATmega328P__)
+#elif defined(__AVR_ATmega168__) \
+   || defined(__AVR_ATmega328P__)
 #  include <arduino/ATmegaX8/pins.h>
 #elif defined(__AVR_ATmega1280__)
 #  include <arduino/ATmega1280/pins.h>
