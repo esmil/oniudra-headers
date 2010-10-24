@@ -18,7 +18,7 @@
 #if defined(__AVR_ATmega8__)
 #  error "arduino/spi.h: Not implemented for ATmega8 chips yet"
 #elif defined(__AVR_ATmega328P__)
-#  include <arduino/ATmega328P/spi.h>
+#  include <arduino/ATmegaX8/spi.h>
 #elif defined(__AVR_ATmega1280__)
 #  error "arduino/spi.h: Not implemented for ATmega1280 chips yet"
 #elif defined(__AVR_ATtiny25__) \

@@ -18,7 +18,7 @@
 #if defined(__AVR_ATmega8__)
 #  include <arduino/ATmega8/adc.h>
 #elif defined(__AVR_ATmega328P__)
-#  include <arduino/ATmega328P/adc.h>
+#  include <arduino/ATmegaX8/adc.h>
 #elif defined(__AVR_ATmega1280__)
 #  error "arduino/adc.h: Not implemented for ATmega1280 chips yet"
 #elif defined(__AVR_ATtiny25__) \

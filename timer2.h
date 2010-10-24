@@ -18,7 +18,7 @@
 #if defined(__AVR_ATmega8__)
 #  error "arduino/timer2.h: Not implemented for ATmega8 chips yet"
 #elif defined(__AVR_ATmega328P__)
-#  include <arduino/ATmega328P/timer2.h>
+#  include <arduino/ATmegaX8/timer2.h>
 #elif defined(__AVR_ATmega1280__)
 #  error "arduino/timer2.h: Not implemented for ATmega1280 chips yet"
 #elif defined(__AVR_ATtiny25__) \

@@ -19,7 +19,7 @@
 #if defined(__AVR_ATmega8__)
 #  include <arduino/ATmega8/pins.h>
 #elif defined(__AVR_ATmega328P__)
-#  include <arduino/ATmega328P/pins.h>
+#  include <arduino/ATmegaX8/pins.h>
 #elif defined(__AVR_ATmega1280__)
 #  include <arduino/ATmega1280/pins.h>
 #elif defined(__AVR_ATtiny25__) \
