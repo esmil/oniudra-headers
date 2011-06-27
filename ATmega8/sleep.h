@@ -23,31 +23,31 @@
 
 /* set sleep mode */
 static inline void
-sleep_mode_idle()
+sleep_mode_idle(void)
 {
 	MCUCR = MCUCR & ~(_BV(SM2) | _BV(SM1) | _BV(SM0));
 }
 
 static inline void
-sleep_mode_noise_reduction()
+sleep_mode_noise_reduction(void)
 {
 	MCUCR = (MCUCR & ~(_BV(SM2) | _BV(SM1))) | _BV(SM0);
 }
 
 static inline void
-sleep_mode_power_down()
+sleep_mode_power_down(void)
 {
 	MCUCR = (MCUCR & ~(_BV(SM2) | _BV(SM0))) | _BV(SM1);
 }
 
 static inline void
-sleep_mode_power_save()
+sleep_mode_power_save(void)
 {
 	MCUCR = (MCUCR & ~(_BV(SM2))) | _BV(SM1) | _BV(SM0);
 }
 
 static inline void
-sleep_mode_standby()
+sleep_mode_standby(void)
 {
 	MCUCR = (MCUCR & ~(_BV(SM0))) | _BV(SM2) | _BV(SM1);
 }

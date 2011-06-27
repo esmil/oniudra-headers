@@ -23,27 +23,27 @@
 #include <avr/interrupt.h>
 
 static inline void
-adc_reference_external()
+adc_reference_external(void)
 {
 	ADMUX = ADMUX & ~(_BV(REFS1) | _BV(REFS0));
 }
 
 static inline void
-adc_reference_internal_5v()
+adc_reference_internal_5v(void)
 {
 	ADMUX = (ADMUX & ~(_BV(REFS1))) | _BV(REFS0);
 }
 
 static inline void
-adc_reference_internal_1v1()
+adc_reference_internal_1v1(void)
 {
 	ADMUX = ADMUX | _BV(REFS1) | _BV(REFS0);
 }
 
 static inline void
-adc_adjust_left()  { ADMUX |= _BV(ADLAR); }
+adc_adjust_left(void)  { ADMUX |= _BV(ADLAR); }
 static inline void
-adc_adjust_right() { ADMUX &= ~(_BV(ADLAR)); }
+adc_adjust_right(void) { ADMUX &= ~(_BV(ADLAR)); }
 
 static inline void
 adc_pin_select(uint8_t pin)
@@ -53,131 +53,131 @@ adc_pin_select(uint8_t pin)
 }
 
 static inline uint8_t
-adc_pin()
+adc_pin(void)
 {
 	return ADMUX & (_BV(MUX3) | _BV(MUX2) | _BV(MUX1) | _BV(MUX0));
 }
 
 static inline void
-adc_enable()               { ADCSRA |= _BV(ADEN); }
+adc_enable(void)               { ADCSRA |= _BV(ADEN); }
 static inline void
-adc_disable()              { ADCSRA &= ~(_BV(ADEN)); }
+adc_disable(void)              { ADCSRA &= ~(_BV(ADEN)); }
 static inline void
-adc_start()                { ADCSRA |= _BV(ADSC); }
+adc_start(void)                { ADCSRA |= _BV(ADSC); }
 static inline uint8_t
-adc_running()              { return ADCSRA & _BV(ADSC); }
+adc_running(void)              { return ADCSRA & _BV(ADSC); }
 static inline void
-adc_trigger_enable()       { ADCSRA |= _BV(ADATE); }
+adc_trigger_enable(void)       { ADCSRA |= _BV(ADATE); }
 static inline void
-adc_trigger_disable()      { ADCSRA &= ~(_BV(ADATE)); }
+adc_trigger_disable(void)      { ADCSRA &= ~(_BV(ADATE)); }
 static inline uint8_t
-adc_interrupt_flag()       { return ADCSRA & _BV(ADIF); }
+adc_interrupt_flag(void)       { return ADCSRA & _BV(ADIF); }
 static inline void
-adc_interrupt_flag_clear() { ADCSRA |= _BV(ADIF); }
+adc_interrupt_flag_clear(void) { ADCSRA |= _BV(ADIF); }
 static inline void
-adc_interrupt_enable()     { ADCSRA |= _BV(ADIE); }
+adc_interrupt_enable(void)     { ADCSRA |= _BV(ADIE); }
 static inline void
-adc_interrupt_disable()    { ADCSRA &= ~(_BV(ADIE)); }
+adc_interrupt_disable(void)    { ADCSRA &= ~(_BV(ADIE)); }
 
 #define adc_interrupt() ISR(ADC_vect)
 #define adc_interrupt_naked() ISR(ADC_vect, ISR_NAKED)
 #define adc_interrupt_empty() EMPTY_INTERRUPT(ADC_vect)
 
 static inline void
-adc_clock_d2()
+adc_clock_d2(void)
 {
 	ADCSRA = (ADCSRA & ~(_BV(ADPS2) | _BV(ADPS1))) | _BV(ADPS0);
 }
 
 static inline void
-adc_clock_d4()
+adc_clock_d4(void)
 {
 	ADCSRA = (ADCSRA & ~(_BV(ADPS2) | _BV(ADPS0))) | _BV(ADPS1);
 }
 
 static inline void
-adc_clock_d8()
+adc_clock_d8(void)
 {
 	ADCSRA = (ADCSRA & ~(_BV(ADPS2))) | _BV(ADPS1) | _BV(ADPS0);
 }
 
 static inline void
-adc_clock_d16()
+adc_clock_d16(void)
 {
 	ADCSRA = (ADCSRA & ~(_BV(ADPS1) | _BV(ADPS0))) | _BV(ADPS2);
 }
 
 static inline void
-adc_clock_d32()
+adc_clock_d32(void)
 {
 	ADCSRA = (ADCSRA & ~(_BV(ADPS1))) | _BV(ADPS2) | _BV(ADPS0);
 }
 
 static inline void
-adc_clock_d64()
+adc_clock_d64(void)
 {
 	ADCSRA = (ADCSRA & ~(_BV(ADPS0))) | _BV(ADPS2) | _BV(ADPS1);
 }
 
 static inline void
-adc_clock_d128()
+adc_clock_d128(void)
 {
 	ADCSRA = ADCSRA | _BV(ADPS2) | _BV(ADPS1) | _BV(ADPS0);
 }
 
 static inline void
-adc_trigger_freerunning()
+adc_trigger_freerunning(void)
 {
 	ADCSRB = ADCSRB & ~(_BV(ADTS2) | _BV(ADTS1) | _BV(ADTS0));
 }
 
 static inline void
-adc_trigger_ac()
+adc_trigger_ac(void)
 {
 	ADCSRB = (ADCSRB & ~(_BV(ADTS2) | _BV(ADTS1))) | _BV(ADTS0);
 }
 
 static inline void
-adc_trigger_external0()
+adc_trigger_external0(void)
 {
 	ADCSRB = (ADCSRB & ~(_BV(ADTS2) | _BV(ADTS0))) | _BV(ADTS1);
 }
 
 static inline void
-adc_trigger_timer0_a()
+adc_trigger_timer0_a(void)
 {
 	ADCSRB = (ADCSRB & ~(_BV(ADTS2))) | _BV(ADTS1) | _BV(ADTS0);
 }
 
 static inline void
-adc_trigger_timer0_ovf()
+adc_trigger_timer0_ovf(void)
 {
 	ADCSRB = (ADCSRB & ~(_BV(ADTS1) | _BV(ADTS0))) | _BV(ADTS2);
 }
 
 static inline void
-adc_trigger_timer1_b()
+adc_trigger_timer1_b(void)
 {
 	ADCSRB = (ADCSRB & ~(_BV(ADTS1))) | _BV(ADTS2) | _BV(ADTS0);
 }
 
 static inline void
-adc_trigger_timer1_ovf()
+adc_trigger_timer1_ovf(void)
 {
 	ADCSRB = (ADCSRB & ~(_BV(ADTS0))) | _BV(ADTS2) | _BV(ADTS1);
 }
 
 static inline void
-adc_trigger_timer1_ce()
+adc_trigger_timer1_ce(void)
 {
 	ADCSRB = ADCSRB | _BV(ADTS2) | _BV(ADTS1) | _BV(ADTS0);
 }
 
 static inline uint8_t
-adc_data_high() { return ADCH; }
+adc_data_high(void) { return ADCH; }
 static inline uint8_t
-adc_data_low()  { return ADCL; }
+adc_data_low(void)  { return ADCL; }
 static inline uint16_t
-adc_data()      { return ADC; }
+adc_data(void)      { return ADC; }
 
 #endif

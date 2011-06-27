@@ -33,27 +33,27 @@ define_pin_basic(5, DDRB, PORTB, PINB, 5)
 
 /* external interrupts */
 static inline void
-pin2_interrupt_mode_low()     { MCUCR = MCUCR & ~(_BV(ISC01) | _BV(ISC00)); }
+pin2_interrupt_mode_low(void)     { MCUCR = MCUCR & ~(_BV(ISC01) | _BV(ISC00)); }
 static inline void
-pin2_interrupt_mode_change()  { MCUCR = (MCUCR & ~(_BV(ISC01))) | _BV(ISC00); }
+pin2_interrupt_mode_change(void)  { MCUCR = (MCUCR & ~(_BV(ISC01))) | _BV(ISC00); }
 static inline void
-pin2_interrupt_mode_falling() { MCUCR = (MCUCR & ~(_BV(ISC00))) | _BV(ISC01); }
+pin2_interrupt_mode_falling(void) { MCUCR = (MCUCR & ~(_BV(ISC00))) | _BV(ISC01); }
 static inline void
-pin2_interrupt_mode_rising()  { MCUCR = MCUCR | _BV(ISC01) | _BV(ISC00); }
+pin2_interrupt_mode_rising(void)  { MCUCR = MCUCR | _BV(ISC01) | _BV(ISC00); }
 
 #define pin2_interrupt() ISR(INT0_vect)
 #define pin2_interrupt_naked() ISR(INT0_vect, ISR_NAKED)
 #define pin2_interrupt_empty() EMPTY_INTERRUPT(INT0_vect)
 
 static inline void
-pin2_interrupt_enable()       { GIMSK |= _BV(INT0); }
+pin2_interrupt_enable(void)       { GIMSK |= _BV(INT0); }
 static inline void
-pin2_interrupt_disable()      { GIMSK &= ~(_BV(INT0)); }
+pin2_interrupt_disable(void)      { GIMSK &= ~(_BV(INT0)); }
 
 static inline uint8_t
-pin2_interrupt_flag()         { return GIFR & INTF0; }
+pin2_interrupt_flag(void)         { return GIFR & INTF0; }
 static inline void
-pin2_interrupt_flag_clear()   { GIFR |= _BV(INTF0); }
+pin2_interrupt_flag_clear(void)   { GIFR |= _BV(INTF0); }
 
 /* pin change interrupts */
 define_pin_change_mask(0, PCMSK, PCINT0)
@@ -67,9 +67,9 @@ define_pin_change_mask(5, PCMSK, PCINT5)
 #define pin_0to5_interrupt_naked() ISR(PCINT_vect, ISR_NAKED)
 #define pin_0to5_interrupt_empty() EMPTY_INTERRUPT(PCINT_vect)
 static inline void
-pin_0to5_interrupt_enable()   { GIMSK |= _BV(PCIE); }
+pin_0to5_interrupt_enable(void)   { GIMSK |= _BV(PCIE); }
 static inline void
-pin_0to5_interrupt_disable()  { GIMSK &= ~(_BV(PCIE)); }
+pin_0to5_interrupt_disable(void)  { GIMSK &= ~(_BV(PCIE)); }
 
 /* enable/disable digital input */
 define_pin_digital_input(0, DIDR0, AIN0D)

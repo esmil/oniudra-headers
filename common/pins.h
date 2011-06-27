@@ -39,26 +39,26 @@
 
 #define define_pin_basic(nr, ddr, port, pinx, bit)\
 	static __attribute__((always_inline)) inline void\
-	pin##nr##_mode_output() { ddr  |= _BV(bit); }\
+	pin##nr##_mode_output(void) { ddr  |= _BV(bit); }\
 	static __attribute__((always_inline)) inline void\
-	pin##nr##_mode_input()  { ddr  &= ~(_BV(bit)); }\
+	pin##nr##_mode_input(void)  { ddr  &= ~(_BV(bit)); }\
 	static __attribute__((always_inline)) inline void\
-	pin##nr##_high()        { port |= _BV(bit); }\
+	pin##nr##_high(void)        { port |= _BV(bit); }\
 	static __attribute__((always_inline)) inline void\
-	pin##nr##_low()         { port &= ~(_BV(bit)); }\
+	pin##nr##_low(void)         { port &= ~(_BV(bit)); }\
 	static __attribute__((always_inline)) inline void\
-	pin##nr##_toggle()      { pinx |= _BV(bit); }\
+	pin##nr##_toggle(void)      { pinx |= _BV(bit); }\
 	static inline uint8_t\
-	pin##nr##_is_high()	{ return pinx & _BV(bit); }
+	pin##nr##_is_high(void)	{ return pinx & _BV(bit); }
 
 #define define_pin_change_mask(nr, pcmsk, bit)\
 	static inline void\
-	pin##nr##_interrupt_mask()   { pcmsk |= _BV(bit); }\
+	pin##nr##_interrupt_mask(void)   { pcmsk |= _BV(bit); }\
 	static inline void\
-	pin##nr##_interrupt_unmask() { pcmsk &= ~(_BV(bit)); }
+	pin##nr##_interrupt_unmask(void) { pcmsk &= ~(_BV(bit)); }
 
 #define define_pin_digital_input(nr, didr, bit)\
 	static inline void\
-	pin##nr##_digital_input_disable() { didr |= _BV(bit); }\
+	pin##nr##_digital_input_disable(void) { didr |= _BV(bit); }\
 	static inline void\
-	pin##nr##_digital_input_enable()  { didr &= ~(_BV(bit)); }
+	pin##nr##_digital_input_enable(void)  { didr &= ~(_BV(bit)); }

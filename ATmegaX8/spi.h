@@ -23,52 +23,52 @@
 #include <avr/interrupt.h>
 
 static inline void
-spi_interrupt_enable()    { SPCR |= _BV(SPIE); }
+spi_interrupt_enable(void)    { SPCR |= _BV(SPIE); }
 static inline void
-spi_interrupt_disable()   { SPCR &= ~(_BV(SPIE)); }
+spi_interrupt_disable(void)   { SPCR &= ~(_BV(SPIE)); }
 static inline uint8_t
-spi_interrupt_enabled()   { return SPCR & _BV(SPIE); }
+spi_interrupt_enabled(void)   { return SPCR & _BV(SPIE); }
 static inline void
-spi_enable()              { SPCR |= _BV(SPE); }
+spi_enable(void)              { SPCR |= _BV(SPE); }
 static inline void
-spi_disable()             { SPCR &= ~(_BV(SPE)); }
+spi_disable(void)             { SPCR &= ~(_BV(SPE)); }
 static inline void
-spi_data_order_lsb()      { SPCR |= _BV(DORD); }
+spi_data_order_lsb(void)      { SPCR |= _BV(DORD); }
 static inline void
-spi_data_order_msb()      { SPCR &= ~(_BV(DORD)); }
+spi_data_order_msb(void)      { SPCR &= ~(_BV(DORD)); }
 static inline void
-spi_mode_master()         { SPCR |= _BV(MSTR); }
+spi_mode_master(void)         { SPCR |= _BV(MSTR); }
 static inline void
-spi_mode_slave()          { SPCR &= ~(_BV(MSTR)); }
+spi_mode_slave(void)          { SPCR &= ~(_BV(MSTR)); }
 static inline void
-spi_clock_polarity_high() { SPCR |= _BV(CPOL); }
+spi_clock_polarity_high(void) { SPCR |= _BV(CPOL); }
 static inline void
-spi_clock_polarity_low()  { SPCR &= ~(_BV(CPOL)); }
+spi_clock_polarity_low(void)  { SPCR &= ~(_BV(CPOL)); }
 static inline void
-spi_clock_phase_first()   { SPCR |= _BV(CPHA); }
+spi_clock_phase_first(void)   { SPCR |= _BV(CPHA); }
 static inline void
-spi_clock_phase_last()    { SPCR &= ~(_BV(CPHA)); }
+spi_clock_phase_last(void)    { SPCR &= ~(_BV(CPHA)); }
 
 static inline void
-spi_clock_d4()
+spi_clock_d4(void)
 {
 	SPCR = SPCR & ~(_BV(SPR1) | _BV(SPR0));
 }
 
 static inline void
-spi_clock_d16()
+spi_clock_d16(void)
 {
 	SPCR = (SPCR & ~(_BV(SPR1))) | _BV(SPR0);
 }
 
 static inline void
-spi_clock_d64()
+spi_clock_d64(void)
 {
 	SPCR = (SPCR & ~(_BV(SPR0))) | _BV(SPR1);
 }
 
 static inline void
-spi_clock_d128()
+spi_clock_d128(void)
 {
 	SPCR = SPCR | _BV(SPR1) | _BV(SPR1);
 }
@@ -78,17 +78,17 @@ spi_clock_d128()
 #define spi_interrupt_empty() EMPTY_INTERRUPT(SPI_STC_vect)
 
 static inline uint8_t
-spi_interrupt_flag()  { return SPSR & _BV(SPIF); }
+spi_interrupt_flag(void)  { return SPSR & _BV(SPIF); }
 static inline uint8_t
-spi_write_collision() { return SPSR & _BV(WCOL); }
+spi_write_collision(void) { return SPSR & _BV(WCOL); }
 
 static inline void
-spi_clock_t2()        { SPSR |= _BV(SPI2X); }
+spi_clock_t2(void)        { SPSR |= _BV(SPI2X); }
 static inline void
-spi_clock_t1()        { SPSR &= ~(_BV(SPI2X)); }
+spi_clock_t1(void)        { SPSR &= ~(_BV(SPI2X)); }
 
 static inline uint8_t
-spi_read()            { return SPDR; }
+spi_read(void)            { return SPDR; }
 static inline void
 spi_write(uint8_t c)  { SPDR = c; }
 
