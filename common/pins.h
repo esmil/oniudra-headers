@@ -1,18 +1,18 @@
 /*
- * This file is part of arduino-headers.
+ * This file is part of oniudra-headers.
  *
- * arduino-headers is free software: you can redistribute it and/or
+ * oniudra-headers is free software: you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation, either version 3 of
  * the License, or(at your option) any later version.
  *
- * arduino-headers is distributed in the hope that it will be useful,
+ * oniudra-headers is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with arduino-headers.  If not, see <http://www.gnu.org/licenses/>.
+ * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /* macros for factoring out pin mappings */
