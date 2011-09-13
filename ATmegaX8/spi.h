@@ -77,23 +77,21 @@ spi_clock_d128(void)
 #define spi_interrupt_naked() ISR(SPI_STC_vect, ISR_NAKED)
 #define spi_interrupt_empty() EMPTY_INTERRUPT(SPI_STC_vect)
 
-static inline void
-spi_interrupt_raise(void) { SPSR |= _BV(SPIF); }
-static inline void
-spi_interrupt_clear(void) { SPSR &= ~(_BV(SPIF)); }
 static inline uint8_t
-spi_interrupt_flag(void)  { return SPSR & _BV(SPIF); }
+spi_interrupt_flag(void)       { return SPSR & _BV(SPIF); }
+static inline void
+spi_interrupt_flag_clear(void) { SPSR |= _BV(SPIF); }
 static inline uint8_t
-spi_write_collision(void) { return SPSR & _BV(WCOL); }
+spi_write_collision(void)      { return SPSR & _BV(WCOL); }
 
 static inline void
-spi_clock_t2(void)        { SPSR |= _BV(SPI2X); }
+spi_clock_t2(void)             { SPSR |= _BV(SPI2X); }
 static inline void
-spi_clock_t1(void)        { SPSR &= ~(_BV(SPI2X)); }
+spi_clock_t1(void)             { SPSR &= ~(_BV(SPI2X)); }
 
 static inline uint8_t
-spi_read(void)            { return SPDR; }
+spi_read(void)                 { return SPDR; }
 static inline void
-spi_write(uint8_t c)      { SPDR = c; }
+spi_write(uint8_t c)           { SPDR = c; }
 
 #endif
