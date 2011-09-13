@@ -85,6 +85,14 @@ serial_baud_57600(void)
 }
 
 static inline void
+serial_baud_115200(void)
+{
+	UCSR0A = (UCSR0A & ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0)))
+	       | _BV(U2X0);
+	UBRR0 = 16;
+}
+
+static inline void
 serial_baud_250k(void)
 {
 	UCSR0A &= ~(_BV(FE0) | _BV(DOR0) | _BV(UPE0) | _BV(U2X0));
