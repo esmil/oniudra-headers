@@ -26,6 +26,10 @@
    || defined(__AVR_ATtiny45__) \
    || defined(__AVR_ATtiny85__)
 #  include <arduino/ATtinyX5/pins.h>
+#elif defined(__AVR_ATmega8U2__) \
+   || defined(__AVR_ATmega16U2__) \
+   || defined(__AVR_ATmega32U2__)
+#  include <arduino/ATmegaXU2/pins.h>
 #else
 #  error "arduino/pins.h: Unknown chip type"
 #endif

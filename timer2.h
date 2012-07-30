@@ -25,7 +25,11 @@
 #elif defined(__AVR_ATtiny25__) \
    || defined(__AVR_ATtiny45__) \
    || defined(__AVR_ATtiny85__)
-#  error "arduino/timer2.h: Does not exists on the ATtiny25/45/85"
+#  error "arduino/timer2.h: Not available on ATtiny25/45/85 chips"
+#elif defined(__AVR_ATmega8U2__) \
+   || defined(__AVR_ATmega16U2__) \
+   || defined(__AVR_ATmega32U2__)
+#  error "arduino/timer2.h: Not available on ATmega8U2/16U2/32U2 chips"
 #else
 #  error "arduino/timer2.h: Unknown chip type"
 #endif
