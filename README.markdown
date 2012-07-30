@@ -54,6 +54,7 @@ find a [Makefile][5] for compiling and uploading Arduino programs.
 [4]: http://github.com/labitat/doorduino
 [5]: http://github.com/labitat/doorduino/blob/master/Makefile
 
+
 License
 -------
 
@@ -61,6 +62,7 @@ arduino-headers is free software. It is distributed under the terms of
 the [GNU General Public License][6]
 
 [6]: http://www.fsf.org/licensing/licenses/gpl.html
+
 
 Contact
 -------
