@@ -46,7 +46,7 @@ define_pin_basic(A2, DDRC, PORTC, PINC, 2)
 define_pin_basic(A3, DDRC, PORTC, PINC, 3)
 define_pin_basic(A4, DDRC, PORTC, PINC, 4)
 define_pin_basic(A5, DDRC, PORTC, PINC, 5)
-
+define_pin_basic(A6, DDRC, PORTC, PINC, 6)
 
 /* external interrupts */
 static inline void
