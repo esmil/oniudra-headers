@@ -15,13 +15,6 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _ARDUINO_SPI_H
-#define _ARDUINO_SPI_H
-
-#include <stdint.h>
-#include <avr/io.h>
-#include <avr/interrupt.h>
-
 #define SS   14
 #define SCLK 15
 #define MOSI 16
@@ -86,5 +79,3 @@ static inline uint8_t
 spi_read(void)                 { return SPDR; }
 static inline void
 spi_write(uint8_t c)           { SPDR = c; }
-
-#endif

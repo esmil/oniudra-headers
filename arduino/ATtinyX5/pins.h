@@ -15,13 +15,6 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _ARDUINO_PINS_H
-#define _ARDUINO_PINS_H
-
-#include <stdint.h>
-#include <avr/io.h>
-#include <avr/interrupt.h>
-
 pin__define_basic(0, DDRB, PORTB, PINB, 0)
 pin__define_basic(1, DDRB, PORTB, PINB, 1)
 pin__define_basic(2, DDRB, PORTB, PINB, 2)
@@ -72,5 +65,3 @@ pin_0to5_interrupt_disable(void)  { GIMSK &= ~(_BV(PCIE)); }
 /* enable/disable digital input */
 pin__define_digital_input(0, DIDR0, AIN0D)
 pin__define_digital_input(1, DIDR0, AIN1D)
-
-#endif

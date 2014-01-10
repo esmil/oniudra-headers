@@ -15,6 +15,13 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _ARDUINO_PINS_H
+#define _ARDUINO_PINS_H
+
+#include <stdint.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
 #define pin__define_basic(nr, ddr, port, pinx, bit)\
 	static __attribute__((always_inline)) inline void\
 	pin##nr##_mode_output(void) { ddr  |= _BV(bit); }\
@@ -85,3 +92,5 @@
 #define pin_digital_input_disable(nr) pin_digital_input_disable_(nr)
 #define pin_digital_input_enable_(nr) pin##nr##_digital_input_enable()
 #define pin_digital_input_enable(nr) pin_digital_input_enable_(nr)
+
+#endif

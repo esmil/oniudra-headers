@@ -15,13 +15,6 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _ARDUINO_TWI_H
-#define _ARDUINO_TWI_H
-
-#include <stdint.h>
-#include <avr/io.h>
-#include <avr/interrupt.h>
-
 static inline void
 twi_bitrate_set(uint8_t v)
 {
@@ -86,5 +79,3 @@ twi_address_mask_set(uint8_t v)    { TWAMR = v; }
 #define twi_interrupt()       ISR(TWI_vect)
 #define twi_interrupt_naked() ISR(TWI_vect, ISR_NAKED)
 #define twi_interrupt_empty() EMPTY_INTERRUPT(TWI_vect)
-
-#endif

@@ -15,6 +15,13 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _ARDUINO_TIMER0_H
+#define _ARDUINO_TIMER0_H
+
+#include <stdint.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
 #if defined(__AVR_ATmega8__)
 #  error "arduino/timer0.h: Not implemented for ATmega8 chips yet"
 #elif defined(__AVR_ATmega168__) \
@@ -32,4 +39,6 @@
 #  error "arduino/timer0.h: Not implemented for ATmega8U2/16U2/32U2 chips yet"
 #else
 #  error "arduino/timer0.h: Unknown chip type"
+#endif
+
 #endif

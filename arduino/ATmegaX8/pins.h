@@ -15,13 +15,6 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _ARDUINO_PINS_H
-#define _ARDUINO_PINS_H
-
-#include <stdint.h>
-#include <avr/io.h>
-#include <avr/interrupt.h>
-
 pin__define_basic( 0, DDRD, PORTD, PIND, 0)
 pin__define_basic( 1, DDRD, PORTD, PIND, 1)
 pin__define_basic( 2, DDRD, PORTD, PIND, 2)
@@ -146,5 +139,3 @@ pin__define_digital_input(A2, DIDR0, ADC2D)
 pin__define_digital_input(A3, DIDR0, ADC3D)
 pin__define_digital_input(A4, DIDR0, ADC4D)
 pin__define_digital_input(A5, DIDR0, ADC5D)
-
-#endif

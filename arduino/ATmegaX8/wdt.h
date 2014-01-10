@@ -15,13 +15,6 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _ARDUINO_WDT_H
-#define _ARDUINO_WDT_H
-
-#include <stdint.h>
-#include <avr/io.h>
-#include <avr/interrupt.h>
-
 static inline void
 wdt_reset(void) { __asm__ __volatile__ ("wdr\n"); }
 
@@ -84,5 +77,3 @@ wdt_interrupt_flag_clear(void) { WDTCSR |= _BV(WDIF); }
 #define wdt_interrupt()       ISR(WDT_vect)
 #define wdt_interrupt_naked() ISR(WDT_vect, ISR_NAKED)
 #define wdt_interrupt_empty() EMPTY_INTERRUPT(WDT_vect)
-
-#endif

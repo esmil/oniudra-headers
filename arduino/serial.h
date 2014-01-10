@@ -15,6 +15,13 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _ARDUINO_SERIAL_H
+#define _ARDUINO_SERIAL_H
+
+#include <stdint.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
 #if defined(__AVR_ATmega8__)
 #  error "arduino/serial.h: Not implemented for ATmega8 chips yet"
 #elif defined(__AVR_ATmega168__) \
@@ -36,3 +43,5 @@
 
 #define serial_init(baud, mode) \
 	do { serial_baud_##baud(); serial_mode_##mode(); } while (0)
+
+#endif

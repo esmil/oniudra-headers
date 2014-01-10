@@ -15,13 +15,6 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _ARDUINO_SERIAL_H
-#define _ARDUINO_SERIAL_H
-
-#include <stdint.h>
-#include <avr/io.h>
-#include <avr/interrupt.h>
-
 /* baud settings */
 static inline void
 serial_baud_2400(void)
@@ -264,5 +257,3 @@ static inline uint8_t
 serial_writeable(void)      { return UCSR0A & _BV(UDRE0); }
 static inline void
 serial_write(uint8_t c) { UDR0 = c; }
-
-#endif

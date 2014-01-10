@@ -15,6 +15,13 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _ARDUINO_WDT_H
+#define _ARDUINO_WDT_H
+
+#include <stdint.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
 #if defined(__AVR_ATmega8__)
 #  error "arduino/wdt.h: Not implemented for ATmega8 chips yet"
 #elif defined(__AVR_ATmega168__) \
@@ -32,4 +39,6 @@
 #  error "arduino/wdt.h: Not implemented for ATmega8U2/16U2/32U2 chips yet"
 #else
 #  error "arduino/wdt.h: Unknown chip type"
+#endif
+
 #endif

@@ -15,6 +15,13 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _ARDUINO_ADC_H
+#define _ARDUINO_ADC_H
+
+#include <stdint.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
 #if defined(__AVR_ATmega8__)
 #  include <arduino/ATmega8/adc.h>
 #elif defined(__AVR_ATmega168__) \
@@ -32,4 +39,6 @@
 #  error "arduino/adc.h: Not implemented for ATmega8U2/16U2/32U2 chips yet"
 #else
 #  error "arduino/adc.h: Unknown chip type"
+#endif
+
 #endif

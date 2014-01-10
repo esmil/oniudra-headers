@@ -15,6 +15,13 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _ARDUINO_SPI_H
+#define _ARDUINO_SPI_H
+
+#include <stdint.h>
+#include <avr/io.h>
+#include <avr/interrupt.h>
+
 #if defined(__AVR_ATmega8__)
 #  error "arduino/spi.h: Not implemented for ATmega8 chips yet"
 #elif defined(__AVR_ATmega168__) \
@@ -32,4 +39,6 @@
 #  include <arduino/ATmegaXU2/spi.h>
 #else
 #  error "arduino/spi.h: Unknown chip type"
+#endif
+
 #endif

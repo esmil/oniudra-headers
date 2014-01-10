@@ -15,12 +15,6 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _ARDUINO_SLEEP_H
-#define _ARDUINO_SLEEP_H
-
-#include <avr/io.h>
-#include <avr/sleep.h>
-
 /* set sleep mode */
 static inline void
 sleep_mode_idle(void)
@@ -51,5 +45,3 @@ sleep_mode_extended_standby(void)
 {
 	SMCR = SMCR | _BV(SM2) | _BV(SM1) | _BV(SM0);
 }
-
-#endif

@@ -15,13 +15,6 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _ARDUINO_ADC_H
-#define _ARDUINO_ADC_H
-
-#include <stdint.h>
-#include <avr/io.h>
-#include <avr/interrupt.h>
-
 static inline void
 adc_reference_external(void)
 {
@@ -131,5 +124,3 @@ static inline uint8_t
 adc_data_low(void)  { return ADCL; }
 static inline uint16_t
 adc_data(void)      { return ADC; }
-
-#endif

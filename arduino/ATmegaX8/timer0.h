@@ -15,13 +15,6 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _ARDUINO_TIMER0_H
-#define _ARDUINO_TIMER0_H
-
-#include <stdint.h>
-#include <avr/io.h>
-#include <avr/interrupt.h>
-
 /* timer0 mode select */
 static inline void
 timer0_mode_normal(void)
@@ -211,5 +204,3 @@ static inline uint8_t
 timer0_flag_a(void)      { return TIFR0 & _BV(OCF0A); }
 static inline uint8_t
 timer0_flag_b(void)      { return TIFR0 & _BV(OCF0B); }
-
-#endif

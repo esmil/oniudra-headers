@@ -15,6 +15,12 @@
  * along with oniudra-headers.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef _ARDUINO_SLEEP_H
+#define _ARDUINO_SLEEP_H
+
+#include <avr/io.h>
+#include <avr/sleep.h>
+
 #if defined(__AVR_ATmega8__)
 #  include <arduino/ATmega8/sleep.h>
 #elif defined(__AVR_ATmega168__) \
@@ -32,4 +38,6 @@
 #  include <arduino/ATmegaXU2/sleep.h>
 #else
 #  error "arduino/sleep.h: Unknown chip type"
+#endif
+
 #endif
