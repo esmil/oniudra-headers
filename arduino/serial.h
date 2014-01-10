@@ -33,3 +33,6 @@
 #else
 #  error "arduino/serial.h: Unknown chip type"
 #endif
+
+#define serial_init(baud, mode) \
+	do { serial_baud_##baud(); serial_mode_##mode(); } while (0)
