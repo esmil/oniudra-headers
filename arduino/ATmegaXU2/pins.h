@@ -22,34 +22,29 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-#include <arduino/common/pins.h>
+pin__define_basic(14, DDRB, PORTB, PINB, 0)
+pin__define_basic(15, DDRB, PORTB, PINB, 1)
+pin__define_basic(16, DDRB, PORTB, PINB, 2)
+pin__define_basic(17, DDRB, PORTB, PINB, 3)
+pin__define_basic(18, DDRB, PORTB, PINB, 4)
+pin__define_basic(19, DDRB, PORTB, PINB, 5)
+pin__define_basic(20, DDRB, PORTB, PINB, 6)
+pin__define_basic(21, DDRB, PORTB, PINB, 7)
 
-define_pin_basic(14, DDRB, PORTB, PINB, 0)
-define_pin_basic(15, DDRB, PORTB, PINB, 1)
-define_pin_basic(16, DDRB, PORTB, PINB, 2)
-define_pin_basic(17, DDRB, PORTB, PINB, 3)
-define_pin_basic(18, DDRB, PORTB, PINB, 4)
-define_pin_basic(19, DDRB, PORTB, PINB, 5)
-define_pin_basic(20, DDRB, PORTB, PINB, 6)
-define_pin_basic(21, DDRB, PORTB, PINB, 7)
+pin__define_basic(24, DDRC, PORTC, PINC, 1)
+pin__define_basic( 5, DDRC, PORTC, PINC, 2)
+pin__define_basic(26, DDRC, PORTC, PINC, 4)
+pin__define_basic(25, DDRC, PORTC, PINC, 5)
+pin__define_basic(23, DDRC, PORTC, PINC, 6)
+pin__define_basic(22, DDRC, PORTC, PINC, 7)
 
-define_pin_basic(24, DDRC, PORTC, PINC, 1)
-define_pin_basic( 5, DDRC, PORTC, PINC, 2)
-define_pin_basic(26, DDRC, PORTC, PINC, 4)
-define_pin_basic(25, DDRC, PORTC, PINC, 5)
-define_pin_basic(23, DDRC, PORTC, PINC, 6)
-define_pin_basic(22, DDRC, PORTC, PINC, 7)
+pin__define_basic( 6, DDRD, PORTD, PIND, 0)
+pin__define_basic( 7, DDRD, PORTD, PIND, 1)
+pin__define_basic( 8, DDRD, PORTD, PIND, 2)
+pin__define_basic( 9, DDRD, PORTD, PIND, 3)
+pin__define_basic(10, DDRD, PORTD, PIND, 4)
+pin__define_basic(11, DDRD, PORTD, PIND, 5)
+pin__define_basic(12, DDRD, PORTD, PIND, 6)
+pin__define_basic(13, DDRD, PORTD, PIND, 7)
 
-define_pin_basic( 6, DDRD, PORTD, PIND, 0)
-define_pin_basic( 7, DDRD, PORTD, PIND, 1)
-define_pin_basic( 8, DDRD, PORTD, PIND, 2)
-define_pin_basic( 9, DDRD, PORTD, PIND, 3)
-define_pin_basic(10, DDRD, PORTD, PIND, 4)
-define_pin_basic(11, DDRD, PORTD, PIND, 5)
-define_pin_basic(12, DDRD, PORTD, PIND, 6)
-define_pin_basic(13, DDRD, PORTD, PIND, 7)
-
-#undef define_pin_basic
-#undef define_pin_change_mask
-#undef define_pin_digital_input
 #endif

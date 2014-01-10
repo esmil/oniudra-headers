@@ -22,14 +22,12 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-#include <arduino/common/pins.h>
-
-define_pin_basic(0, DDRB, PORTB, PINB, 0)
-define_pin_basic(1, DDRB, PORTB, PINB, 1)
-define_pin_basic(2, DDRB, PORTB, PINB, 2)
-define_pin_basic(3, DDRB, PORTB, PINB, 3)
-define_pin_basic(4, DDRB, PORTB, PINB, 4)
-define_pin_basic(5, DDRB, PORTB, PINB, 5)
+pin__define_basic(0, DDRB, PORTB, PINB, 0)
+pin__define_basic(1, DDRB, PORTB, PINB, 1)
+pin__define_basic(2, DDRB, PORTB, PINB, 2)
+pin__define_basic(3, DDRB, PORTB, PINB, 3)
+pin__define_basic(4, DDRB, PORTB, PINB, 4)
+pin__define_basic(5, DDRB, PORTB, PINB, 5)
 
 /* external interrupts */
 static inline void
@@ -56,12 +54,12 @@ static inline void
 pin2_interrupt_flag_clear(void)   { GIFR |= _BV(INTF0); }
 
 /* pin change interrupts */
-define_pin_change_mask(0, PCMSK, PCINT0)
-define_pin_change_mask(1, PCMSK, PCINT1)
-define_pin_change_mask(2, PCMSK, PCINT2)
-define_pin_change_mask(3, PCMSK, PCINT3)
-define_pin_change_mask(4, PCMSK, PCINT4)
-define_pin_change_mask(5, PCMSK, PCINT5)
+pin__define_change_mask(0, PCMSK, PCINT0)
+pin__define_change_mask(1, PCMSK, PCINT1)
+pin__define_change_mask(2, PCMSK, PCINT2)
+pin__define_change_mask(3, PCMSK, PCINT3)
+pin__define_change_mask(4, PCMSK, PCINT4)
+pin__define_change_mask(5, PCMSK, PCINT5)
 
 #define pin_0to5_interrupt() ISR(PCINT_vect)
 #define pin_0to5_interrupt_naked() ISR(PCINT_vect, ISR_NAKED)
@@ -72,10 +70,7 @@ static inline void
 pin_0to5_interrupt_disable(void)  { GIMSK &= ~(_BV(PCIE)); }
 
 /* enable/disable digital input */
-define_pin_digital_input(0, DIDR0, AIN0D)
-define_pin_digital_input(1, DIDR0, AIN1D)
+pin__define_digital_input(0, DIDR0, AIN0D)
+pin__define_digital_input(1, DIDR0, AIN1D)
 
-#undef define_pin_basic
-#undef define_pin_change_mask
-#undef define_pin_digital_input
 #endif

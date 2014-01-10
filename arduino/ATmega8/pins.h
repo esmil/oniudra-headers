@@ -22,32 +22,27 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-#include <arduino/common/pins.h>
+pin__define_basic( 0, DDRD, PORTD, PIND, 0)
+pin__define_basic( 1, DDRD, PORTD, PIND, 1)
+pin__define_basic( 2, DDRD, PORTD, PIND, 2)
+pin__define_basic( 3, DDRD, PORTD, PIND, 3)
+pin__define_basic( 4, DDRD, PORTD, PIND, 4)
+pin__define_basic( 5, DDRD, PORTD, PIND, 5)
+pin__define_basic( 6, DDRD, PORTD, PIND, 6)
+pin__define_basic( 7, DDRD, PORTD, PIND, 7)
 
-define_pin_basic( 0, DDRD, PORTD, PIND, 0)
-define_pin_basic( 1, DDRD, PORTD, PIND, 1)
-define_pin_basic( 2, DDRD, PORTD, PIND, 2)
-define_pin_basic( 3, DDRD, PORTD, PIND, 3)
-define_pin_basic( 4, DDRD, PORTD, PIND, 4)
-define_pin_basic( 5, DDRD, PORTD, PIND, 5)
-define_pin_basic( 6, DDRD, PORTD, PIND, 6)
-define_pin_basic( 7, DDRD, PORTD, PIND, 7)
+pin__define_basic( 8, DDRB, PORTB, PINB, 0)
+pin__define_basic( 9, DDRB, PORTB, PINB, 1)
+pin__define_basic(10, DDRB, PORTB, PINB, 2)
+pin__define_basic(11, DDRB, PORTB, PINB, 3)
+pin__define_basic(12, DDRB, PORTB, PINB, 4)
+pin__define_basic(13, DDRB, PORTB, PINB, 5)
 
-define_pin_basic( 8, DDRB, PORTB, PINB, 0)
-define_pin_basic( 9, DDRB, PORTB, PINB, 1)
-define_pin_basic(10, DDRB, PORTB, PINB, 2)
-define_pin_basic(11, DDRB, PORTB, PINB, 3)
-define_pin_basic(12, DDRB, PORTB, PINB, 4)
-define_pin_basic(13, DDRB, PORTB, PINB, 5)
+pin__define_basic(A0, DDRC, PORTC, PINC, 0)
+pin__define_basic(A1, DDRC, PORTC, PINC, 1)
+pin__define_basic(A2, DDRC, PORTC, PINC, 2)
+pin__define_basic(A3, DDRC, PORTC, PINC, 3)
+pin__define_basic(A4, DDRC, PORTC, PINC, 4)
+pin__define_basic(A5, DDRC, PORTC, PINC, 5)
 
-define_pin_basic(A0, DDRC, PORTC, PINC, 0)
-define_pin_basic(A1, DDRC, PORTC, PINC, 1)
-define_pin_basic(A2, DDRC, PORTC, PINC, 2)
-define_pin_basic(A3, DDRC, PORTC, PINC, 3)
-define_pin_basic(A4, DDRC, PORTC, PINC, 4)
-define_pin_basic(A5, DDRC, PORTC, PINC, 5)
-
-#undef define_pin_basic
-#undef define_pin_change_mask
-#undef define_pin_digital_input
 #endif
