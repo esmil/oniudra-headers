@@ -120,23 +120,35 @@ define_pin_change_mask(A5, PCMSK1, PCINT13)
 #define pin_0to7_interrupt_naked() ISR(PCINT2_vect, ISR_NAKED)
 #define pin_0to7_interrupt_empty() EMPTY_INTERRUPT(PCINT2_vect)
 static inline void
-pin_0to7_interrupt_enable(void)   { PCICR |= _BV(PCIE2); }
+pin_0to7_interrupt_enable(void)     { PCICR |= _BV(PCIE2); }
 static inline void
-pin_0to7_interrupt_disable(void)  { PCICR &= ~(_BV(PCIE2)); }
+pin_0to7_interrupt_disable(void)    { PCICR &= ~(_BV(PCIE2)); }
+static inline uint8_t
+pin_0to7_interrupt_flag(void)       { return PCIFR & _BV(PCIF2); }
+static inline void
+pin_0to7_interrupt_flag_clear(void) { PCIFR |= _BV(PCIF2); }
 #define pin_8to13_interrupt() ISR(PCINT0_vect)
 #define pin_8to13_interrupt_naked() ISR(PCINT0_vect, ISR_NAKED)
 #define pin_8to13_interrupt_empty() EMPTY_INTERRUPT(PCINT0_vect)
 static inline void
-pin_8to13_interrupt_enable(void)  { PCICR |= _BV(PCIE0); }
+pin_8to13_interrupt_enable(void)     { PCICR |= _BV(PCIE0); }
 static inline void
-pin_8to13_interrupt_disable(void) { PCICR &= ~(_BV(PCIE0)); }
+pin_8to13_interrupt_disable(void)    { PCICR &= ~(_BV(PCIE0)); }
+static inline uint8_t
+pin_8to13_interrupt_flag(void)       { return PCIFR & _BV(PCIF0); }
+static inline void
+pin_8to13_interrupt_flag_clear(void) { PCIFR |= _BV(PCIF0); }
 #define pin_A0toA5_interrupt() ISR(PCINT1_vect)
 #define pin_A0toA5_interrupt_naked() ISR(PCINT1_vect, ISR_NAKED)
 #define pin_A0toA5_interrupt_empty() EMPTY_INTERRUPT(PCINT1_vect)
 static inline void
-pin_A0toA5_interrupt_enable(void)  { PCICR |= _BV(PCIE1); }
+pin_A0toA5_interrupt_enable(void)     { PCICR |= _BV(PCIE1); }
 static inline void
-pin_A0toA5_interrupt_disable(void) { PCICR &= ~(_BV(PCIE1)); }
+pin_A0toA5_interrupt_disable(void)    { PCICR &= ~(_BV(PCIE1)); }
+static inline uint8_t
+pin_A0toA5_interrupt_flag(void)       { return PCIFR & _BV(PCIF1); }
+static inline void
+pin_A0toA5_interrupt_flag_clear(void) { PCIFR |= _BV(PCIF1); }
 
 /* enable/disable digital input */
 define_pin_digital_input(6, DIDR1, AIN0D)
